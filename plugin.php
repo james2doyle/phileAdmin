@@ -35,11 +35,10 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       'parse_markdown'
       );
     \Phile\Session::set('is_admin', true);
-    $this->hidden = array('path', 'asset_path', 'title');
   }
 
   private function hideValues() {
-    foreach ($this->hidden as $item) {
+    foreach ($this->settings['hidden_settings'] as $item) {
       unset($this->config['config'][$item]);
     }
   }
