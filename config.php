@@ -3,6 +3,7 @@
 return array(
   'username' => 'james',
   'password' => 'phile',
+  'admin_url' => '/admin', // must have a leading slash
   'filename_is_title' => true,
   'upload_dir' => \Phile\Utility::getBaseUrl() . '/content/uploads/',
   'upload_path' => CONTENT_DIR . 'uploads/',
@@ -13,6 +14,8 @@ return array(
   'message_new_error' => 'Error Creating New Post',
   'message_save_post' => 'Saved Successfully',
   'message_save_error' => 'Error Saving File',
+  'message_delete_post' => 'Delete Successfully',
+  'message_delete_error' => 'Error Deleting File',
   // the post title gets overwritten by the new file function
   'required_fields' => array(
     array(

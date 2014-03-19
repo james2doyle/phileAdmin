@@ -1,16 +1,21 @@
 function pageControls(active) {
   $('.page-controls').on('click', '.btn', function(event) {
     var target = this.id.split('-')[0];
+    var path = $(this).parent().attr('data-url');
     if (target == 'delete') {
       event.preventDefault();
       if(confirm('Are You Sure You Want To Delete ' + active + '?')) {
-        $('.page-info').transit({
-          x: '100%',
-          opacity: 0
-        }, 400, function() {
-          $('.nested-sortable li.active').remove();
-          // changePage.call($('.nested-sortable li a')[0]);
-          $('.nested-sortable li a').first().trigger('click');
+        $.post(admin.url+'delete_file', { filename: path }).then(function(res) {
+          phile.message(res.message);
+          $('.page-info').transit({
+            x: '100%',
+            opacity: 0
+          }, 400, function() {
+            $('.nested-sortable li.active').remove();
+            $('.nested-sortable li a').first().trigger('click');
+          });
+        }, function(res) {
+          phile.message(res.message);
         });
       }
       return false;

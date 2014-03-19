@@ -53,9 +53,9 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
   public function on($eventKey, $data = null) {
     // check $eventKey for which you have registered
     if ($eventKey == 'plugins_loaded') {
-      $uri = str_replace('/' . \Phile\Utility::getInstallPath(), '', $_SERVER['REQUEST_URI']).'/admin';
+      $uri = str_replace('/' . \Phile\Utility::getInstallPath(), '', $_SERVER['REQUEST_URI']).$this->settings['admin_url'];
       if (strpos($uri, 'editor') === false) {
-        $parts = explode('/admin', $uri);
+        $parts = explode($this->settings['admin_url'], $uri);
         $target = str_replace('/', '', $parts[1]);
         if (!empty($target) || in_array($target, $this->choices)) {
           $this->{$target}();
@@ -74,7 +74,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
     if (!\Phile\Session::get('is_admin')) {
       $this->render('login.php');
     } else {
-      \Phile\Utility::redirect($this->base_url . '/admin/pages');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/pages');
     }
   }
 
@@ -109,7 +109,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $this->config['title'] = 'Pages';
       $this->render('pages.php');
     } else {
-      \Phile\Utility::redirect($this->base_url . '/admin/login');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/login');
     }
     exit;
   }
@@ -141,7 +141,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $this->config['images'] = $this->media_list();
       $this->render('media.php');
     } else {
-      \Phile\Utility::redirect($this->base_url . '/admin/login');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/login');
     }
     exit;
   }
@@ -155,7 +155,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $this->config['images'] = $this->media_list();
       $this->render('template-media.php');
     } else {
-      \Phile\Utility::redirect($this->base_url . '/admin/login');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/login');
     }
     exit;
   }
@@ -211,7 +211,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $this->hideValues();
       $this->render('settings.php');
     } else {
-      \Phile\Utility::redirect($this->base_url . '/admin/login');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/login');
     }
     exit;
   }
@@ -275,9 +275,9 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
     $post = $this->filter($_POST);
     if($post['username'] === $this->settings['username'] && $post['password'] === $this->settings['password']) {
       \Phile\Session::set('is_admin', true);
-      \Phile\Utility::redirect($this->base_url . '/admin/pages');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/pages');
     } else {
-      \Phile\Utility::redirect($this->base_url . '/admin/login');
+      \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/login');
     }
     exit;
   }
@@ -289,7 +289,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
   private function logout() {
     header_remove();
     \Phile\Session::set('is_admin', false);
-    \Phile\Utility::redirect($this->base_url . '/admin/login');
+    \Phile\Utility::redirect($this->base_url . $this->settings['admin_url'] . '/login');
   }
 
   /*!
@@ -336,6 +336,23 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $this->send_json(array(
         'status' => false,
         'message' => $this->settings['message_new_error'],
+        ));
+    }
+  }
+
+  public function delete_file()
+  {
+    $post = $this->filter($_POST);
+    $file = CONTENT_DIR . $post['filename'] . '.md';
+    if(unlink($file)) {
+      $this->send_json(array(
+        'status' => true,
+        'message' => $this->settings['message_delete_post']
+        ));
+    } else {
+      $this->send_json(array(
+        'status' => false,
+        'message' => $this->settings['message_delete_error'],
         ));
     }
   }
