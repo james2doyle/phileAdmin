@@ -1,9 +1,9 @@
 function addEvents() {
-  $('.upload-thumb p').swappable();
+  $('.upload-thumb p').last().swappable();
 }
 
 function getFiles() {
-  $.get('media_template', function(res) {
+  $.get('media_template').done(function(res) {
     $('#file-area').html(res);
     addEvents();
   });
@@ -18,5 +18,6 @@ $(function() {
         }
       };
     }
+    $('.upload-thumb p').swappable();
   }
 });
