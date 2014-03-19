@@ -26,14 +26,15 @@ Features that work (mostly)
 
 * edit/save pages
 * media uploads
+* delete page
+* new/save settings
 * settings save and load (works visually and writes a json)
 
 Features that don't work
 
 * create page (this can be done the normal way via adding a .md to the content folder)
 * add children
-* rename/delete page (delete works visually)
-* new/save settings
+* rename page
 
 ### Issues
 
