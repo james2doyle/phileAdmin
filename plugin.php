@@ -205,10 +205,15 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @return page either media or redirect
    */
   private function settings() {
+    $settingsfile = file_get_contents($this->config['path'] . $this->settings['settings_save_file']);
+    $saved = array();
+    if ($settingsfile) {
+      $saved = (array)json_decode($settingsfile);
+    }
     if (\Phile\Session::get('is_admin')) {
       $this->config['title'] = 'Settings';
       $this->config['config'] = $this->config;
-      array_merge($this->config['config'], $this->settings);
+      $this->config['config'] = array_merge($this->config['config'], $saved);
       $this->hideValues();
       $this->render('settings.php');
     } else {
