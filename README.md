@@ -3,6 +3,10 @@ phileAdmin
 
 a take on an admin panel for PhileCMS
 
+## Installing
+
+Install like a normal Phile plugin, then go to the URL, `admin/login` and you will be redirected to the main page.
+
 ## Warning
 
 <p style="color: red">This is a beta. There are features that do not work.</p>
