@@ -1,4 +1,5 @@
 function addEvents() {
+  // the newest item needs the swapper
   $('.upload-thumb p').last().swappable();
 }
 

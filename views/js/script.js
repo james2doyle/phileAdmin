@@ -125,6 +125,7 @@ $(function() {
   });
 })();
 function addEvents() {
+  // the newest item needs the swapper
   $('.upload-thumb p').last().swappable();
 }
 
@@ -225,7 +226,7 @@ function pageFunctions() {
         s(item);
       });
     }
-  }).on('click', 'a', function(event) {
+  }).on('click', 'li a', function(event) {
     event.preventDefault();
     if ((this.id === activePage) || (this.id === 'item_root')) {
       return false;
@@ -236,6 +237,15 @@ function pageFunctions() {
   });
 
   pageControls(activePage);
+}
+
+function newPage() {
+  $.post('new_file', { filename: prompt('Enter A Filename.') }).then(function(res) {
+    console.log(res);
+  },
+  function(res) {
+    console.log(res);
+  });
 }
 
 $(document).ready(function() {

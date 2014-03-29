@@ -10,7 +10,7 @@
         </li>
       <?php endfor; ?>
       <div class="clearfix"></div>
-      <a href="editor.php" class="btn blue" id="new-page">New Page</a>
+      <a href="#" class="btn blue" id="new-page">New Page</a>
     </ul>
     <div class="page-info">
 <!--       <h2><?php echo $pages[0]['title']; ?></h2>
