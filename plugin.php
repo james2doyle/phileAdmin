@@ -33,10 +33,11 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       'save_settings',
       'get_page_info',
       'editor',
-      'parse_markdown'
+      'parse_markdown',
+      'delete_media',
       );
     $this->admin_url = $this->base_url . $this->settings['admin_url'];
-    \Phile\Session::set('is_admin', true);
+    \Phile\Session::get('is_admin', false);
   }
 
   /*!
@@ -66,11 +67,12 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @return page login page or redirect
    */
   private function login() {
-    if (!\Phile\Session::get('is_admin')) {
-      $this->render('login.php');
-    } else {
+    if (\Phile\Session::get('is_admin')) {
       \Phile\Utility::redirect($this->admin_url . '/pages');
+    } else {
+      $this->render('login.php');
     }
+    exit;
   }
 
   /*!
@@ -86,8 +88,8 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       for ($i=0; $i < count($pages); $i++) {
         $this->config['pages'][] = array(
           'title' => $pages[$i]->getTitle(),
-          // 'url' => $this->base_url.'/content/'.$pages[$i]->getUrl(),
           'real_url' => $pages[$i]->getUrl(),
+          // 'url' => $this->base_url.'/content/'.$pages[$i]->getUrl(),
           // 'path' => $pages[$i]->getFilePath(),
           // 'content' => $pages[$i]->getContent(),
           // 'meta' => $pages[$i]->getMeta()->getAll()
@@ -363,6 +365,22 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
     }
   }
 
+  public function delete_media()
+  {
+    $post = $this->filter($_POST);
+    if(unlink($this->settings['upload_path'].$post['filename'])) {
+      $this->send_json(array(
+        'status' => true,
+        'message' => $this->settings['message_delete_post']
+        ));
+    } else {
+      $this->send_json(array(
+        'status' => false,
+        'message' => $this->settings['message_delete_error'],
+        ));
+    }
+  }
+
   /*!
    * save the working file
    * @return json/array the results for the AJAX request
@@ -397,7 +415,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @param  array $data the data to encode as JSON
    * @return json/array       resulting json
    */
-  private function send_json($data) {
+  private static function send_json($data) {
     header_remove();
     header($_SERVER['SERVER_PROTOCOL'].' 200 OK');
     header("Content-Type: application/json; charset=UTF-8");
@@ -410,10 +428,10 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @param  array $data either $_GET or $_POST
    * @return array       the clean result
    */
-  private function filter($data) {
+  private static function filter($data) {
     if (is_array($data)) {
       foreach ($data as $key => $value) {
-        $data[$key] = $this->filter($value);
+        $data[$key] = self::filter($value);
       }
     } else {
       $data = trim(htmlentities(strip_tags($data)));
@@ -431,7 +449,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @param  array $vars     the data to send to the template
    * @return function           cleans the memory
    */
-  private function render_file($filename, $vars = null) {
+  public function render_file($filename, $vars = null) {
     if (is_array($vars) && !empty($vars)) {
       extract($vars);
     }
@@ -445,7 +463,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @param  string $file the file to render
    * @return page       the page to render
    */
-  private function render($file, $data = null)
+  public function render($file, $data = null)
   {
     // set the appropriate headers
     header($_SERVER['SERVER_PROTOCOL'].' 200 OK');
@@ -461,7 +479,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @param  string $text the string to convert
    * @return string       the results of the conversion
    */
-  private function slugify($text) {
+  private static function slugify($text) {
     // replace non letter or digits by -
     $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
     // trim
@@ -484,7 +502,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    * @param  string $contents the contents to write
    * @return int           the number of bytes written
    */
-  private function file_force_contents($dir, $contents){
+  private static function file_force_contents($dir, $contents){
     $parts = explode('/', $dir);
     $file = array_pop($parts);
     $dir = '';

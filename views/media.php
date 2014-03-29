@@ -8,7 +8,7 @@
     </form>
     <div id="file-area">
       <?php foreach($images as $image): ?>
-        <div class="upload-thumb">
+        <div class="upload-thumb" data-path="<?php echo $image['filename'] ?>">
           <a href="<?php echo $image['src'] ?>" target="_blank" title="<?php echo $image['title'] ?>"><img src="<?php echo $image['src'] ?>" width="<?php echo $image['width'] ?>" height="<?php echo $image['height'] ?>" alt="<?php echo $image['alt'] ?>"></a>
           <p><?php echo $image['filename'] ?></p>
           <a href="#" class="btn red top-close">X</a>

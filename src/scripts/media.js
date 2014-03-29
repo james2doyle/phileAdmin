@@ -19,5 +19,21 @@ $(function() {
       };
     }
     $('.upload-thumb p').swappable();
+    $('.upload-thumb').on('click', '.top-close', function(event) {
+      event.preventDefault();
+      var $parent = $(this).parent();
+      $.post('delete_media', { filename: $parent.attr('data-path') }).then(function(res) {
+        phile.message(res.message);
+        $parent.transit({
+          scale: 0,
+          opacity: 0
+        }, 400, function() {
+          $parent.remove();
+        });
+      }, function(res) {
+        phile.message(res.message);
+      });
+      return false;
+    });
   }
 });

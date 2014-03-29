@@ -14,7 +14,7 @@ return array(
   'message_new_error' => 'Error Creating New Post',
   'message_save_post' => 'Saved Successfully',
   'message_save_error' => 'Error Saving File',
-  'message_delete_post' => 'Delete Successfully',
+  'message_delete_post' => 'Delete Successful',
   'message_delete_error' => 'Error Deleting File',
   'hidden_settings' => array('path', 'asset_path', 'title'), // the settings that you do not want to show on the settings page. Important for not breaking the site.
   // the post title gets overwritten by the new file function
