@@ -118,6 +118,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $data = array(
         'title' => $page->getTitle(),
         'url' => $this->base_url.'/content/'.$page->getUrl(),
+        'base_url' => $this->base_url,
         'real_url' => $page->getUrl(),
         'path' => $page->getFilePath(),
         'content' => $page->getContent(),
@@ -333,11 +334,10 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
     $template .= $this->settings['default_content'];
     // ceck to see if creating the new file was a success
     if($this->file_force_contents($filepath, $template)) {
-      $list_item = '<li><a href="'.$url.'" data-path="'.$filepath.'">'.$title[1].'</a></li>';
+      $list_item = '<li><a href="#" data-path="'.$dest.'" id="item_'.$post['id'].'">'.$title[1].'</a></li>';
       $this->send_json(array(
         'status' => true,
         'message' => $this->settings['message_new_post'],
-        'content' => $template,
         'list_item' => $list_item
         ));
     } else {
@@ -417,7 +417,8 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
    */
   private static function send_json($data) {
     header_remove();
-    header($_SERVER['SERVER_PROTOCOL'].' 200 OK');
+    $status = ($data['status']) ? ' 200 OK': ' 400 Bad Request';
+    header($_SERVER['SERVER_PROTOCOL'].$status, true);
     header("Content-Type: application/json; charset=UTF-8");
     echo json_encode($data);
     exit;
@@ -491,7 +492,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
     // remove unwanted characters
     $text = preg_replace('~[^-\w]+~', '', $text);
     if (empty($text)) {
-      return 'n-a';
+      return '';
     }
     return $text;
   }

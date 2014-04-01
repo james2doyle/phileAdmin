@@ -1,3 +1,19 @@
+function newPage() {
+  var $list = $('.nested-sortable').find('li');
+  var filename = prompt('Enter A Filename.', 'foldername/filename');
+  if (filename !== null) {
+    $.post(admin.url+'new_file', {
+      filename: prompt('Enter A Filename.', 'foldername/filename'),
+      id: $list.length + 1
+    }).then(function(res) {
+      $list.last().after(res.list_item);
+    },
+    function(res) {
+      phile.message(res.message);
+    });
+  }
+}
+
 function pageControls(active) {
   $('.page-controls').on('click', '.btn', function(event) {
     var target = this.id.split('-')[0];
@@ -68,17 +84,12 @@ function pageFunctions() {
     changePage.call(this);
     return false;
   });
-
-  pageControls(activePage);
-}
-
-function newPage() {
-  $.post('new_file', { filename: prompt('Enter A Filename.') }).then(function(res) {
-    console.log(res);
-  },
-  function(res) {
-    console.log(res);
+  $('#new-page').on('click', function(event) {
+    event.preventDefault();
+    newPage();
+    return false;
   });
+  pageControls(activePage);
 }
 
 $(document).ready(function() {

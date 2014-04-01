@@ -1,8 +1,9 @@
 <h2><?php echo $title; ?></h2>
+<p><strong>URL:</strong> <a href="<?php echo $base_url.'/'.$real_url; ?>" target="_blank"><?php echo '/'.$real_url; ?></a></p>
 <?php if (isset($meta['description'])): ?>
-  <p><strong>Description</strong> <?php echo $meta['description']; ?></p>
+  <p><strong>Description:</strong> <?php echo $meta['description']; ?></p>
 <?php else: ?>
-  <p><strong>Description</strong> <em>No Description set.</em></p>
+  <p><strong>Description:</strong> <em>No Description set.</em></p>
 <?php endif ?>
 <ul>
 <?php if (count($meta) > 1): ?>
