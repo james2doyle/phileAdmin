@@ -24,17 +24,15 @@ I am formally inviting these people to evaluate this plugin. Even if you weren't
 
 Features that work (mostly)
 
+* create/edit/rename/delete pages
 * edit/save pages
 * media uploads
-* delete page
 * new/save settings
 * settings save and load (works visually and writes a json)
 
 Features that don't work
 
-* create page (this can be done the normal way via adding a .md to the content folder)
 * add children
-* rename page
 
 ### Issues
 

@@ -1,12 +1,30 @@
 function newPage() {
   var $list = $('.nested-sortable').find('li');
-  var filename = prompt('Enter A Filename.', 'foldername/filename');
-  if (filename !== null) {
+  var newname = prompt('Enter A New Filename. (Without the extension)', 'foldername/filename');
+  if (newname !== null) {
     $.post(admin.url+'new_file', {
-      filename: prompt('Enter A Filename.', 'foldername/filename'),
+      filename: newname,
       id: $list.length + 1
     }).then(function(res) {
+      phile.message(res.message);
       $list.last().after(res.list_item);
+    },
+    function(res) {
+      phile.message(res.message);
+    });
+  }
+}
+
+function renamePage() {
+  var oldfile = $('.page-controls').attr('data-url');
+  var filename = prompt('Enter A New Filename. (Without the extension)', oldfile);
+  if (filename !== null) {
+    $.post(admin.url+'rename_file', {
+      oldname: oldfile,
+      newname: filename
+    }).then(function(res) {
+      phile.message(res.message);
+      $('.page-info').find('.page-link').attr('href', res.url).text('/' + filename);
     },
     function(res) {
       phile.message(res.message);
@@ -18,7 +36,8 @@ function pageControls(active) {
   $('.page-controls').on('click', '.btn', function(event) {
     var target = this.id.split('-')[0];
     var path = $(this).parent().attr('data-url');
-    if (target == 'delete') {
+    switch(target) {
+      case 'delete':
       event.preventDefault();
       if(confirm('Are You Sure You Want To Delete ' + active + '?')) {
         $.post(admin.url+'delete_file', { filename: path }).then(function(res) {
@@ -35,6 +54,9 @@ function pageControls(active) {
         });
       }
       return false;
+      break;
+      case 'rename':
+      renamePage();
     }
   });
 }

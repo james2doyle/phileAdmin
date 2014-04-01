@@ -25,6 +25,7 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       'login_form',
       'save',
       'new_file',
+      'rename_file',
       'pages',
       'media',
       'media_list',
@@ -361,6 +362,25 @@ class PhileAdmin extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObs
       $this->send_json(array(
         'status' => false,
         'message' => $this->settings['message_delete_error'],
+        ));
+    }
+  }
+
+  public function rename_file()
+  {
+    $post = $this->filter($_POST);
+    $newfile = CONTENT_DIR . $post['newname'] . '.md';
+    $oldfile = CONTENT_DIR . $post['oldname'] . '.md';
+    if(rename($oldfile, $newfile)) {
+      $this->send_json(array(
+        'status' => true,
+        'message' => $this->settings['message_rename_post'],
+        'url' => $this->base_url.'/'.$post['newname']
+        ));
+    } else {
+      $this->send_json(array(
+        'status' => false,
+        'message' => $this->settings['message_rename_error'],
         ));
     }
   }
