@@ -1,6 +1,6 @@
 <div class="side-menu">
   <div class="center">
-    <a href="<?php echo $base_url ?>" class="side-logo"><img src="<?php echo $asset_path; ?>img/logo.png" width="114" height="114"></a>
+    <a href="<?php echo $base_url ?>" class="side-logo" target="_blank"><img src="<?php echo $asset_path; ?>img/logo.png" width="114" height="114"></a>
   </div>
   <a href="<?php echo $base_url; ?>"><i class="fa fa-home"></i> View Site</a>
   <a href="pages" <?php if(strtolower($title) == 'pages'): ?>class="active"<?php endif; ?>><i class="fa fa-file-text"></i> Pages</a>
