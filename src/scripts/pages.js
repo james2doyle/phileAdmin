@@ -36,9 +36,9 @@ function pageControls(active) {
   $('.page-controls').on('click', '.btn', function(event) {
     var target = this.id.split('-')[0];
     var path = $(this).parent().attr('data-url');
+    event.preventDefault();
     switch(target) {
       case 'delete':
-      event.preventDefault();
       if(confirm('Are You Sure You Want To Delete ' + active + '?')) {
         $.post(admin.url+'delete_file', { filename: path }).then(function(res) {
           phile.message(res.message);
@@ -53,11 +53,11 @@ function pageControls(active) {
           phile.message(res.message);
         });
       }
-      return false;
       break;
       case 'rename':
       renamePage();
     }
+    return false;
   });
 }
 
