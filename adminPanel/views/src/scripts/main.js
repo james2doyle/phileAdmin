@@ -39,12 +39,37 @@ $(document).ready(function() {
 	});
 
 	function deleteFile(url) {
-		$.post('delete_file', {
+		return $.post('delete_file', {
 			value: url
-		}).then(function(res) {
-			console.log(res);
-		}, function(err) {
-			console.log(err);
+		});
+	}
+
+	function handleDelete(i, e, items, plugins) {
+		var $input = $(e).find('input');
+		if ($input.prop('checked')) {
+			items.push({
+				value: $input.attr('data-url')
+			});
+			deleteFile($input.attr('data-url')).then(function() {
+				var $target = $('#' + $input.val());
+				if (plugins) {
+					$target.find('strong').toggle();
+					items.forEach(function(index) {
+						index.status = $target.find('strong:visible').text();
+					});
+				} else {
+					$target.transition({
+						scale: 0
+					}, 500, 'ease', function() {
+						$(e).remove();
+					});
+				}
+			}, function function_name(argument) {
+				vex.dialog.alert('<p>Error Deleting File</p>');
+			});
+		}
+		$input.each(function(index, el) {
+			$(el).prop('checked', false);
 		});
 	}
 
@@ -57,62 +82,40 @@ $(document).ready(function() {
 				if (value) {
 					var items = [];
 					$parent.each(function(i, e) {
-						var $input = $(e).find('input');
-						if ($input.prop('checked')) {
-							items.push({
-								value: $input.attr('data-url')
-							});
-							deleteFile($input.attr('data-url'));
-							var $target = $('#' + $input.val());
-							if (plugins) {
-								$target.find('strong').toggle();
-								items.forEach(function(index) {
-									index.status = $target.find('strong:visible').text();
-								});
-							} else {
-								$target.transition({
-									scale: 0
-								}, 500, 'ease', function() {
-									$(e).remove();
-								});
-							}
-						}
-						$input.each(function(index, el) {
-							$(el).prop('checked', false);
-						});
+						handleDelete(i, e, items, plugins);
 					});
 					$('#delete-selected').prop('disabled', true);
 					$('#check-all').prop('checked', false);
 				}
 			}
 		});
-}
-$('#delete-selected').on('click', function() {
-	deleteItems($('.item-list').find('tbody').find('tr'));
-});
-$('.content').on('click', '.photo-item', function() {
-	var $input = $(this).find('input');
+	}
+	$('#delete-selected').on('click', function() {
+		deleteItems($('.item-list').find('tbody').find('tr'));
+	});
+	$('.content').on('click', '.photo-item', function() {
+		var $input = $(this).find('input');
 		// simple toggle of the checked attr
 		$input.prop('checked', !$input.prop('checked'));
 		$(this).toggleClass('selected');
 	});
-$('#delete-photos').on('click', function(event) {
-	event.preventDefault();
-	deleteItems($('.photo-item'));
-	return false;
-});
-$('#clear-selected').on('click', function(event) {
-	event.preventDefault();
-	$('.photo-item').each(function(index, el) {
-		$(el).find('input').prop('checked', false);
-		$(el).removeClass('selected');
+	$('#delete-photos').on('click', function(event) {
+		event.preventDefault();
+		deleteItems($('.photo-item'));
+		return false;
 	});
-	return false;
-});
-$('#column-count').on('input', function() {
-	$('.photo-list').attr('class', 'photo-list');
-	$('.photo-list').addClass('columns-' + $(this).val());
-	$('#column-count-val').text($(this).val());
+	$('#clear-selected').on('click', function(event) {
+		event.preventDefault();
+		$('.photo-item').each(function(index, el) {
+			$(el).find('input').prop('checked', false);
+			$(el).removeClass('selected');
+		});
+		return false;
+	});
+	$('#column-count').on('input', function() {
+		$('.photo-list').attr('class', 'photo-list');
+		$('.photo-list').addClass('columns-' + $(this).val());
+		$('#column-count-val').text($(this).val());
 		// Store the choice of columns
 		store.set('photo-columns', $(this).val());
 	});
@@ -244,7 +247,7 @@ $('#column-count').on('input', function() {
 			setTimeout(function() {
 				vex.close();
 				window.history.back();
-			}, 2000);
+			}, 1500);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('<p>Error Deleting File</p>');
