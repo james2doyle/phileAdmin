@@ -511,6 +511,13 @@ a, button[type="button"], input[type="submit"] {
   }
 }
 
+.photos {
+  .dropzone, .photo-list {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
 .photo-item {
   text-align: center;
   @include inline-block();

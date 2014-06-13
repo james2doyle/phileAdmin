@@ -98,7 +98,6 @@ sup {
 sub {
   bottom: -0.25em; }
 
-
 img {
   border: 0; }
 
@@ -2629,6 +2628,10 @@ a.btn, button[type="button"].btn, input[type="submit"].btn {
 
 .columns-2.photo-list .photo-item {
   width: 50%; }
+
+.photos .dropzone, .photos .photo-list {
+  -webkit-user-select: none;
+  user-select: none; }
 
 .photo-item {
   text-align: center;
