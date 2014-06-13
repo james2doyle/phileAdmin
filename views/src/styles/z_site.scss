@@ -518,6 +518,10 @@ a, button[type="button"], input[type="submit"] {
   }
 }
 
+.dropzone.form {
+  margin: 0 0 1em 0;
+}
+
 .photo-item {
   text-align: center;
   @include inline-block();

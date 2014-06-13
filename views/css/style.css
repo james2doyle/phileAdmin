@@ -2633,6 +2633,9 @@ a.btn, button[type="button"].btn, input[type="submit"].btn {
   -webkit-user-select: none;
   user-select: none; }
 
+.dropzone.form {
+  margin: 0 0 1em 0; }
+
 .photo-item {
   text-align: center;
   display: -moz-inline-stack;
