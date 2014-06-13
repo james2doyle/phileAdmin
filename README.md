@@ -9,7 +9,17 @@ You can download the old release [here](https://github.com/james2doyle/phileAdmi
 
 ### Installation
 
-Make sure the folder is named adminPanel and drop it into `plugins/phile/`. Then move `upload-htaccess` `to content/uploads/.htaccess`.
+At the root of your Phile installation:
+
+`git clone https://github.com/james2doyle/phileAdmin plugins/phile/adminPanel`
+
+Or if you are downloading, make sure the folder is named `adminPanel` and drop it into `plugins/phile/`. Then move `upload-htaccess` `to content/uploads/.htaccess`.
+
+You also need add the plugin to your config:
+
+```
+'phile\\adminPanel' => array('active' => true)
+```
 
 ## Features
 
