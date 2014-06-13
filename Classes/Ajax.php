@@ -101,7 +101,7 @@ class Ajax {
 		$finfo = finfo_open(FILEINFO_MIME_TYPE);
 		$file_templates = array();
 		foreach ($this->data as $filename) {
-			$file = CONTENT_DIR . $filename;
+			$file = ROOT_DIR . $filename;
 			if(file_exists($file)) {
 				$info = getimagesize($file);
 				$file_data = array(
