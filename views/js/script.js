@@ -12805,7 +12805,7 @@ $(document).ready(function() {
 					vex.dialog.alert(res.message);
 					setTimeout(function() {
 						vex.close();
-						window.location.href = pageType;
+						window.location.href = 'edit?url='+value.split('.')[0]+'&type=' + pageType;
 					}, 1500);
 				}, function(err) {
 					console.log(err);

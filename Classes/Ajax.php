@@ -191,7 +191,7 @@ class Ajax {
 		if (!Utilities::safe_extension($path)) {
 			$this->send_json(array(
 				'status' => false,
-				'message' => 'Unsafe file upload'
+				'message' => 'Unsafe file extension'
 				));
 		}
 		$safe_filename = str_replace($path['filename'], Utilities::slugify($path['filename']), $this->data['path']);
