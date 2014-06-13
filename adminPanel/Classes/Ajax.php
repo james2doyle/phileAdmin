@@ -58,7 +58,12 @@ class Ajax {
 	public function delete_file()
 	{
 		foreach ($this->data as $value) {
-			$file = CONTENT_DIR . $value;
+			if (preg_match('/^content/', $value)) {
+				$value = str_replace('content/', '', $value);
+				$file = CONTENT_DIR . $value;
+			} else {
+				$file = ROOT_DIR . $value;
+			}
 			if(unlink($file)) {
 				$this->send_json(array(
 					'status' => true,
@@ -67,7 +72,7 @@ class Ajax {
 			} else {
 				$this->send_json(array(
 					'status' => false,
-					'message' => "Error deleting ".  $value,
+					'message' => "Error deleting ". $value,
 					));
 			}
 		}

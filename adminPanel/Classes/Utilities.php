@@ -155,7 +155,7 @@ class Utilities {
 		$pathinfo = pathinfo($value);
 		$image_obj->name = basename($value);
 		$image_obj->slug = self::slugify(str_replace('.'.$pathinfo['extension'], '', basename($value)));
-		$image_obj->path = str_replace(CONTENT_DIR, '', $value);
+		$image_obj->path = str_replace(ROOT_DIR, '', $value);
 		$image_obj->url = $base_url . '/'.str_replace(ROOT_DIR, '', $value);
 		$image_obj->info = getimagesize($value);
 		$image_obj->mime = finfo_file($finfo, $value);

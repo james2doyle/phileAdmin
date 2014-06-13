@@ -30,7 +30,7 @@
       <?php foreach($pages as $page): ?>
         <tr id="<?php echo $page->slug ?>">
           <td align="center">
-            <input type="checkbox" class="row-select" value="<?php echo $page->slug ?>" data-url="<?php echo $page->getURL() ?>.md">
+            <input type="checkbox" class="row-select" value="<?php echo $page->slug ?>" data-url="content/<?php echo $page->getURL() ?>.md">
           </td>
           <td><?php echo $page->getMeta()->title ?></td>
           <td><?php echo $page->getURL() ?>.md</td>
