@@ -3,6 +3,10 @@ PhileCMS Admin 1.0.0
 
 This is the new version of the [PhileCMS](https://github.com/PhileCMS/Phile) admin.
 
+## For Phile 0.9.*
+
+You can download the old release [here](https://github.com/james2doyle/phileAdmin/releases/tag/0.9).
+
 Here is what is working so far:
 
 ### Pages
