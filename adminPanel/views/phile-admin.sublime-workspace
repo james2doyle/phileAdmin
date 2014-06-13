@@ -1,0 +1,2474 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"filter",
+				"filter	.filter()"
+			],
+			[
+				"toggle",
+				"togglePanes (fn)"
+			],
+			[
+				"strto",
+				"strtoupper  (function)"
+			],
+			[
+				"webkitbac",
+				"-webkit-backface-visibility:   (property)"
+			],
+			[
+				"input",
+				"input	input - text"
+			],
+			[
+				"load",
+				"loadPhotoColumns (fn)"
+			],
+			[
+				"prop",
+				"prop	.prop() - single"
+			],
+			[
+				"class",
+				"class=  (attribute)"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"remove",
+				"removeClass  (function)"
+			],
+			[
+				"toggl",
+				"toggleClass  (function)"
+			],
+			[
+				"list-s",
+				"list-style"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"slide",
+				"sliderBtns (fn)"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"sou",
+				"soulmates-ad.jpg	w:282 h:181"
+			],
+			[
+				"ali",
+				"text-align"
+			],
+			[
+				"blo",
+				"blog-post1.jpg	w:267 h:157"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"ins",
+				"insta.svg"
+			],
+			[
+				"souls",
+				"soulsessions-header.png	w:1020 h:410"
+			],
+			[
+				"soul",
+				"soulmates-header.png	w:1020 h:407"
+			],
+			[
+				"blog",
+				"blog-header.png	w:1020 h:404"
+			],
+			[
+				"background",
+				"background"
+			],
+			[
+				"abou",
+				"about-splash.png	w:1001 h:660"
+			],
+			[
+				"ab",
+				"about-strokes.png	w:984 h:264"
+			],
+			[
+				"l",
+				"logo-libbyclark.svg"
+			],
+			[
+				"get",
+				"get	$.getScript()"
+			],
+			[
+				"header",
+				"header"
+			],
+			[
+				"lorem",
+				"lorem	lorem ipsum snippet"
+			],
+			[
+				"cusotm",
+				"custom-input"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"area",
+				"areaListen (fn)"
+			],
+			[
+				"close",
+				"closeListeners (fn)"
+			],
+			[
+				"prep",
+				"prepRoot (fn)"
+			],
+			[
+				"repla",
+				"replace (fn)"
+			],
+			[
+				"dele",
+				"deleteFiles (fn)"
+			],
+			[
+				"clea",
+				"cleanedsvg (?)"
+			],
+			[
+				"unli",
+				"fs.unlink(path, callback);"
+			],
+			[
+				"str",
+				"strtoupper"
+			],
+			[
+				"ready",
+				"ready	$(document).ready"
+			],
+			[
+				"is_n",
+				"is_null"
+			],
+			[
+				"proto",
+				"prototype (obj)"
+			],
+			[
+				"then",
+				"then (fn)"
+			],
+			[
+				"console",
+				"console.dir(object);"
+			],
+			[
+				"stat",
+				"fs.stat(path, callback);"
+			],
+			[
+				"err",
+				"err (?)"
+			],
+			[
+				"asyn",
+				"async (?)"
+			],
+			[
+				"unlin",
+				"fs.unlinkSync(path);"
+			],
+			[
+				"exis",
+				"fs.exists(path, callback);"
+			],
+			[
+				"cleaned",
+				"cleanedPath (?)"
+			],
+			[
+				"unl",
+				"fs.unlink(path, callback);"
+			],
+			[
+				"dpi",
+				"dpiOptions (obj)"
+			],
+			[
+				"page",
+				"pages_select"
+			],
+			[
+				"si",
+				"siblings	.siblings()"
+			],
+			[
+				"attr",
+				"attr	.attr() - single"
+			],
+			[
+				"sele",
+				"selected	Attr"
+			],
+			[
+				"array_s",
+				"array_shift"
+			],
+			[
+				"selec",
+				"selectors"
+			],
+			[
+				"each",
+				"each	.each()"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"second",
+				"secondary-color"
+			],
+			[
+				"label",
+				"label	<label>"
+			],
+			[
+				"slu",
+				"slug"
+			],
+			[
+				"qu",
+				"qualities"
+			],
+			[
+				"padding-",
+				"padding-top"
+			],
+			[
+				"offe",
+				"offsetHeight"
+			],
+			[
+				"stor",
+				"storefront2"
+			],
+			[
+				"scrol",
+				"scrollTo (fn)"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"products",
+				"products-services"
+			],
+			[
+				"css",
+				"css	.css() - single"
+			],
+			[
+				"getElement",
+				"getElementsByClassName"
+			],
+			[
+				"ser",
+				"services (?)"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"hea",
+				"header"
+			],
+			[
+				"webkit-trans",
+				"webkit-transform"
+			],
+			[
+				"tran",
+				"translateY"
+			],
+			[
+				"backgrond",
+				"background-color"
+			],
+			[
+				"twi",
+				"twig_vars"
+			],
+			[
+				"tw",
+				"twig_vars"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"color",
+				"colorWhite"
+			],
+			[
+				"col",
+				"colorBlue"
+			],
+			[
+				"start",
+				"startup-modal"
+			],
+			[
+				"no",
+				"normal"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"title",
+				"title	Attr"
+			],
+			[
+				"remo",
+				"removeClass	.removeClass"
+			],
+			[
+				"eac",
+				"each	.each()"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"spli",
+				"split-33"
+			],
+			[
+				"tras",
+				"transparent"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"black",
+				"blackbox-section"
+			],
+			[
+				"cl",
+				"cl	console.log(cl)"
+			],
+			[
+				"form",
+				"forum-widget"
+			],
+			[
+				"margin-t",
+				"margin-bottom"
+			],
+			[
+				"lo",
+				"logged-in"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"bb",
+				"bbSection (?)"
+			],
+			[
+				"bl",
+				"blackbox-banner"
+			],
+			[
+				"A",
+				"AkzidenzGrotesk-BoldCond"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"colorG",
+				"colorGray"
+			],
+			[
+				"menu",
+				"menu-button"
+			],
+			[
+				"tra",
+				"transitionSpeed"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"log",
+				"login-left"
+			],
+			[
+				"var-",
+				"var-primaryBackgroundColor"
+			],
+			[
+				"link",
+				"link	link - stylesheet"
+			],
+			[
+				"font",
+				"font	CSS Font Shorthand"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"body",
+				"bodystr"
+			],
+			[
+				"titl",
+				"title	Attr"
+			],
+			[
+				"_get_",
+				"_get_startups"
+			],
+			[
+				"unde",
+				"undefined"
+			],
+			[
+				"tri",
+				"trigger	trigger"
+			],
+			[
+				"ay",
+				"async_load"
+			],
+			[
+				"asy",
+				"async_load"
+			],
+			[
+				"md-",
+				"md-perspective"
+			],
+			[
+				"st",
+				"style	Attr"
+			],
+			[
+				"bo",
+				"bodyColor"
+			],
+			[
+				"post",
+				"postCompile"
+			],
+			[
+				"serial",
+				"serializeArray	.serializeArray()"
+			],
+			[
+				"moda",
+				"modal_form"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "create-page.php",
+			"settings":
+			{
+				"buffer_size": 3586,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "plugins.php",
+			"settings":
+			{
+				"buffer_size": 2403,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "users.php",
+			"settings":
+			{
+				"buffer_size": 1952,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "settings.php",
+			"settings":
+			{
+				"buffer_size": 2570,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/styles/z_site.scss",
+			"settings":
+			{
+				"buffer_size": 9309,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/scripts/main.js",
+			"settings":
+			{
+				"buffer_size": 5316,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/scripts/_editor-markdown-text-editor.js",
+			"settings":
+			{
+				"buffer_size": 5590,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Build Systems/php-lint.sublime-build",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"lorem",
+				"Snippet: lorem ipsum snippet"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"gist",
+				"GitHub: Copy Gist to Clipboard"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			],
+			[
+				"html",
+				"Set Syntax: HTML5"
+			],
+			[
+				"twi",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"twig",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"viml",
+				"Set Syntax: VimL"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"title",
+				"Convert Case: Title Case"
+			],
+			[
+				"bash",
+				"Snippet: A starting point for bash scripts"
+			],
+			[
+				"fetch",
+				"Fetch: File"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"mini",
+				"Snippet: Mini html template"
+			],
+			[
+				"start",
+				"Snippet: A starting point for bash scripts"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"lowe",
+				"Convert Case: Lower Case"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"defe",
+				"Snippet: Deferred function template that returns a promise"
+			],
+			[
+				"javascrip",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"disba",
+				"Package Control: Disable Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"block",
+				"Toggle Block Comment"
+			],
+			[
+				"docblo",
+				"DocBlockr: Reparse comment block"
+			],
+			[
+				"docb",
+				"DocBlockr: Decorate line comment"
+			],
+			[
+				"node",
+				"Nodejs::Default File Settings"
+			],
+			[
+				"add",
+				"Package Control: Add Repository"
+			],
+			[
+				"upgr",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"markdo",
+				"Set Syntax: Markdown"
+			],
+			[
+				"trai",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"lint",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"upgrade",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"titl",
+				"Convert Case: Title Case"
+			],
+			[
+				"gruntfil",
+				"Snippet: Gruntfile starting point"
+			],
+			[
+				"grunt",
+				"Snippet: Gruntfile starting point"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"extend",
+				"Snippet: Extend ki.js with native functions"
+			],
+			[
+				"Snippet: bash",
+				"Snippet: Bash for each"
+			],
+			[
+				"syntax bas",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"tw",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"upg",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"encode",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"upgrad",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"formt",
+				"Format: Javascript"
+			],
+			[
+				"clear",
+				"Snippet: CSS Clearfix"
+			],
+			[
+				"spe",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"lo",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"lore",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"tit	",
+				"Convert Case: Title Case"
+			],
+			[
+				"asy",
+				"Snippet: Async Load a Javascript file then run a function"
+			],
+			[
+				"auto",
+				"Autoprefix CSS"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"autop",
+				"Autoprefix CSS"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"asyn",
+				"Snippet: Async Load a Javascript file then run a function"
+			],
+			[
+				"base",
+				"Snippet: AJAX Spinner Image in Base64"
+			],
+			[
+				"traili",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"getSc	",
+				"Snippet: $.getScript()"
+			],
+			[
+				"$.get",
+				"Snippet: $.get()"
+			],
+			[
+				"space",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"pack",
+				"Package Control: Discover Packages"
+			],
+			[
+				"jshint",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"jshin",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"$.get	",
+				"Snippet: $.get()"
+			],
+			[
+				"jquery",
+				"Snippet: Google AJAX Libraries: jQuery"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"yml",
+				"Set Syntax: YAML"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"markd",
+				"Set Syntax: Markdown"
+			],
+			[
+				"fet",
+				"Fetch: Manage"
+			],
+			[
+				"less",
+				"Set Syntax: LESS"
+			],
+			[
+				"mini ",
+				"Snippet: Mini html template"
+			],
+			[
+				"packin",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: lo",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"fetc",
+				"Fetch: Manage"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())",
+			"clear",
+			"c",
+			"clear"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/phileadmin/files.php",
+		"/Applications/MAMP/htdocs/phileadmin/partials/header.php",
+		"/Applications/MAMP/htdocs/phileadmin/config.php",
+		"/Applications/MAMP/htdocs/phileadmin/src/scripts/_editor-library.js",
+		"/Applications/MAMP/htdocs/phileadmin/photos.php",
+		"/Applications/MAMP/htdocs/phileadmin/settings.php",
+		"/Applications/MAMP/htdocs/phileadmin/plugins.php",
+		"/Applications/MAMP/htdocs/phileadmin/pages.php",
+		"/Applications/MAMP/htdocs/phileadmin/src/scripts/editor/_markdown-text-editor.js",
+		"/Applications/MAMP/htdocs/phileadmin/src/scripts/main.js",
+		"/Applications/MAMP/htdocs/phileadmin/img/image.php",
+		"/Applications/MAMP/htdocs/phileadmin/src/styles/imports/_vex.scss",
+		"/Applications/MAMP/htdocs/phileadmin/src/styles/imports/_mixins.scss",
+		"/Applications/MAMP/htdocs/PhileCMS/config.php",
+		"/Applications/MAMP/htdocs/PhileCMS/default_config.php",
+		"/Applications/MAMP/htdocs/phileadmin/templates.php",
+		"/Applications/MAMP/htdocs/phileadmin/create-page.php",
+		"/Applications/MAMP/htdocs/phileadmin/markdown.md",
+		"/Applications/MAMP/htdocs/james2doyle/content/web/flexible-svg-placeholders.md",
+		"/Applications/MAMP/htdocs/phileadmin/index.php",
+		"/Applications/MAMP/htdocs/phileadmin/src/styles/imports/_hint.scss",
+		"/Applications/MAMP/htdocs/phileadmin/partials/footer.php",
+		"/Applications/MAMP/htdocs/phileadmin/markdown.html",
+		"/Applications/MAMP/htdocs/phileadmin/index.html",
+		"/Applications/MAMP/htdocs/western-app/index.html",
+		"/Applications/MAMP/htdocs/western-app/css/hint.css",
+		"/Applications/MAMP/htdocs/western-app/css/app.css",
+		"/Applications/MAMP/htdocs/phileadmin/img/logo.svg",
+		"/Applications/MAMP/htdocs/phileadmin/package.json",
+		"/Applications/MAMP/htdocs/phileadmin/src/styles/imports/_iconic.scss",
+		"/Applications/MAMP/htdocs/retro-electro/package.json",
+		"/Applications/MAMP/htdocs/pride/src/styles/z_site.scss",
+		"/Applications/MAMP/htdocs/pride/guide.html",
+		"/Applications/MAMP/htdocs/warpaint-nimbul/css/z_site.styl",
+		"/Applications/MAMP/htdocs/warpaint-nimbul/css/_layout.styl",
+		"/Users/james2doyle/Dropbox/WARPAINT/Aboriginal HRC/aboriginal-videos.md",
+		"/Applications/MAMP/htdocs/anchor-cms/anchor/routes/fields.php",
+		"/Applications/MAMP/htdocs/eyes-on-richmond/themes/eor/partial/header.html",
+		"/Applications/MAMP/htdocs/anchor-cms/anchor/routes/plugins.php",
+		"/Applications/MAMP/htdocs/anchor-cms/anchor/views/extend/plugins/index.php",
+		"/Applications/MAMP/htdocs/anchor-cms/anchor/views/extend/fields/index.php",
+		"/Applications/MAMP/htdocs/anchor-cms/anchor/views/extend/fields/edit.php",
+		"/Users/james2doyle/Library/Caches/com.binarynights.ForkLift2/#0/index.md",
+		"/Applications/MAMP/htdocs/eyes-on-richmond/content/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soul-sessions/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/blog/2014/post-number-three.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/plugins/phileInlineImage/config.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/plugins/phileYoutube/config.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/plugins/phileInlineImage/README.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/src/styles/z_site.scss",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/src/scripts/main.js",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/home.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/blog.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/footer.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/events.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/soulmates.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/soulsessions.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/nav.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/section-title.html",
+		"/Users/james2doyle/Library/Application Support/Sublime Text 3/Packages/User/vevt.sublime-snippet",
+		"/Applications/MAMP/htdocs/textbooks-for-change/themes/t4c/src/scripts/main.js",
+		"/Users/james2doyle/.zshrc",
+		"/Users/james2doyle/.vimrc",
+		"/Users/james2doyle/.nvimrc",
+		"/Users/james2doyle/.oh-my-zsh/prompt.zsh",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/slider.html",
+		"/Applications/MAMP/htdocs/phile-site/docs.html",
+		"/Applications/MAMP/htdocs/phile-site/index.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/lib/Phile/Template/Twig.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/blog/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/events/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soul-mates/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/contact.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soul-sessions/soul-sessions.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/events/events.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soulmates/cole-and-parker.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soulmates/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soulmates/warpaint-media.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/blog/soulmates/warpaint-media.md",
+		"/Applications/MAMP/htdocs/james2doyle/content/personal-project/kaenon-logo.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/soulmate-ad.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/post.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/config.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/blog/2014/05/13/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/blog/2014/06/22/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/post-social.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/plugins/phileTwigFilters/plugin.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/default_config.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/partials/head.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/plugins/phileUserAgent/plugin.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/plugins/phileUserAgent/sniffer.php",
+		"/Applications/MAMP/htdocs/phile-site/img/phile-logo.svg",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/index.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/404.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soul-sessions.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/soul-mates.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/events.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/blog.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/content/about.md",
+		"/Applications/MAMP/htdocs/steamers-cleaners/themes/real-clean/index.html",
+		"/Applications/MAMP/htdocs/steamers-cleaners/config.php",
+		"/Applications/MAMP/htdocs/steamers-cleaners/themes/real-clean/partial/header.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/soul/package.json",
+		"/Applications/MAMP/htdocs/soul-to-soul/lib/Phile/Core.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/.htaccess",
+		"/Applications/MAMP/htdocs/soul-to-soul/lib/Phile/Model/Page.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/lib/Phile/Repository/Page.php",
+		"/Applications/MAMP/htdocs/soul-to-soul/themes/default/index.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/src/styles/imports/_mixins.scss",
+		"/Applications/MAMP/htdocs/soul-to-soul/src/styles/imports/_fonts.scss",
+		"/Applications/MAMP/htdocs/soul-to-soul/soulsessions.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/soulmates.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/blog.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/index.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/events.html",
+		"/Applications/MAMP/htdocs/soul-to-soul/post.md",
+		"/Applications/MAMP/htdocs/soul-to-soul/img/letstalk.svg",
+		"/Applications/MAMP/htdocs/soul-to-soul/img/events.svg",
+		"/Applications/MAMP/htdocs/soul-to-soul/src/styles/imports/_grid.scss",
+		"/Applications/MAMP/htdocs/soul-to-soul/img/logo-libbyclark-wordmark.svg",
+		"/Applications/MAMP/htdocs/soul-to-soul/img/logo-libbyclark-final.svg",
+		"/Applications/MAMP/htdocs/soul-to-soul/img/mask.svg",
+		"/Applications/MAMP/htdocs/rsync.sh",
+		"/Applications/MAMP/htdocs/.rsync-exclude",
+		"/Users/james2doyle/.vim/colors/molokai-custom.vim",
+		"/private/tmp/open_BKHjwQrX.txt",
+		"/private/tmp/open_qxxqbugN.txt",
+		"/Applications/MAMP/htdocs/soul-to-soul/gruntfile.js"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Applications/MAMP/htdocs/soul-to-soul/themes/soul,*.html",
+			"/Applications/MAMP/htdocs/svgo",
+			"/Applications/MAMP/htdocs/isp-website/addons/shared_addons/themes/isp/views/partials,checkout-*.html",
+			"/Applications/MAMP/htdocs/isp-website/addons/shared_addons/modules, form.php",
+			"/Applications/MAMP/htdocs/eyes-on-richmond/content, *.md",
+			"/Applications/MAMP/htdocs/boombox-bakeshop/themes/boombox,*.html",
+			"/Applications/MAMP/htdocs/boombox-bakeshop/themes/boombox/img,*.svg",
+			"/Applications/MAMP/htdocs/mindstack-theme/styl",
+			"/Applications/MAMP/htdocs/bizinc-pyro/addons/shared_addons/modules/mediacoverage",
+			"/Applications/MAMP/htdocs/bizinc-pyro/addons/shared_addons/modules/events",
+			"/Users/james2doyle/Library/Application Support/Sublime Text 3/Packages/",
+			"/Users/james2doyle/Library/Application Support/Sublime Text 3/Packages/Package Control",
+			"/Users/james2doyle/Downloads/bizinc-theme/styl",
+			"/Users/james2doyle/Downloads/kubeless/styl",
+			"/Applications/MAMP/Library",
+			"/Applications/MAMP/bin",
+			"/Applications/MAMP"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"margin-bottom: 1em;",
+			"\\'",
+			"<td",
+			"<th",
+			"settings",
+			"right",
+			"phile",
+			"controls",
+			"myTextArea",
+			"document.getElementById",
+			"index",
+			"+ 2",
+			"+ 1",
+			"wrap('",
+			"<button",
+			"$input",
+			"row-select",
+			"select",
+			"selected",
+			"Value For New Setting",
+			"<?php echo $value ?>",
+			"<?php echo $key ?>",
+			"this",
+			"h4",
+			"strong>:",
+			"50",
+			"4",
+			"255",
+			"placeh",
+			".pdf",
+			"content/images/",
+			"item",
+			"5",
+			"item",
+			"=",
+			" // ",
+			"active\"'",
+			"if()",
+			"php\"",
+			"-webkit-",
+			"none",
+			"class=\"",
+			"style=\"display: block\"",
+			"p>",
+			"jpg",
+			"delete",
+			"&.",
+			"yellow",
+			"color:",
+			"5",
+			"10",
+			"Files",
+			"Pages",
+			"index",
+			"button",
+			"20",
+			"index",
+			"&",
+			"size[",
+			"size",
+			"color",
+			"-family",
+			"color",
+			"fill",
+			"placehold.it",
+			"/2",
+			"0",
+			"50%",
+			"0",
+			"50%",
+			"10",
+			"size",
+			"username",
+			"-1",
+			"100",
+			"6",
+			"200",
+			"4",
+			"page-select",
+			"page-list",
+			"page-select",
+			"$input",
+			"$(e).val()",
+			"#delete-selected",
+			"label",
+			"256, 10000000",
+			"0,",
+			"'#' . ",
+			"><span",
+			"\"><",
+			"<p>",
+			"100x100",
+			"sub-page",
+			"sub-index",
+			"page-actions",
+			"template-",
+			"class=\"page-actions\"",
+			"small\">Edit",
+			"<button type=\"button\" class=\"btn yellow small hint--left\" data-hint=\"View Page\"><span class=\"oi\" data-glyph=\"eye\"></span></button>",
+			".html</td>",
+			"</button>",
+			"button type=\"button\"",
+			"class=\"title\"",
+			"true",
+			"$(this).prop('checked",
+			"\"sub/",
+			"sub/",
+			"<tr id=\"",
+			"<input type=\"checkbox\" name=\"\" value=\"\">",
+			"hint--top",
+			"<button type=\"button\" class=\"btn blue small hint--top\" data-hint=\"Edit Page\"><span class=\"oi\" data-glyph=\"code\"></span></button>\n            <button type=\"button\" class=\"btn yellow small hint--top\" data-hint=\"Edit Page\"><span class=\"oi\" data-glyph=\"eye\"></span></button>",
+			"class=\"btn",
+			"view",
+			"open",
+			"17.5",
+			"15",
+			".md</td>",
+			"0",
+			"<td>",
+			"width=\"",
+			"20",
+			"opacity",
+			"</a>",
+			"border-button ",
+			"class=\"hint",
+			"class",
+			"\">",
+			"&:hover"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"{{ content_url }}/images/",
+			"      \n",
+			"consectetur",
+			"* ",
+			"[$key]",
+			"{$key}",
+			"href=\"services/<?php echo urldecode($page->get['back']) ?>\"",
+			"Description<small>Uses <a href=\"http://blog.lib.umn.edu/crosb002/leadership/Markdown_Cheat_Sheet.pdf\" target=\"_blank\">Markdown</a></small></label>",
+			"{{ usage }} / ${{ price }} / Month",
+			"Moffatt",
+			"",
+			"0.4",
+			">",
+			"  \n",
+			"mediacoverage",
+			"{{ title }}",
+			">\n",
+			"event",
+			"}\n",
+			">",
+			"{\n",
+			"inherit: .clearfix;",
+			"colorGray",
+			"/*",
+			"",
+			"var(colorWhite)",
+			"var(colorBlack)",
+			"clear: fix;",
+			"			\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "create-page.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2890,
+								2890
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 647.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "plugins.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								701,
+								701
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"spell_check": false,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "users.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								945,
+								945
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 230.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "settings.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2570,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1120,
+								1120
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 404.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "src/styles/z_site.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7471,
+								7471
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": true,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 8404.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/scripts/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1247,
+								1247
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 413.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/scripts/_editor-markdown-text-editor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5590,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5149,
+								5149
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"WordCountShouldRun": false,
+							"bh_regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"editorconfig": true,
+							"ensure_newline_at_eof_on_save": true,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2925.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.find_results":
+	{
+		"height": 116.0
+	},
+	"project": "phile-admin.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Applications/MAMP/htdocs/colourfunrun/wp-content/themes/bhinneka/css/style-cfr.less"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 136.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,628 @@
+@import "imports/__normalize";
+@import "imports/_grid";
+@import "imports/_iconic";
+@import "imports/_mixins";
+@import "imports/_hint";
+@import "imports/_vex";
+@import "imports/_dropzone";
+
+// [class^="icon"] {
+//   position: relative;
+//   top: 0.1em;
+// }
+
+$dark: #111;
+$secondary: #424242;
+$light: #999;
+$primary: #B44646;
+
+$blue: #6894d1;
+$red: #c93742;
+$yellow: #e1bb38;
+$green: #ABC23A;
+$purple: #b581cf;
+
+.dark-bg {
+  background-color: $dark;
+}
+
+.dark {
+  color: $dark;
+}
+
+.secondary-bg {
+  background-color: $secondary;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.light-bg {
+  background-color: $light;
+}
+
+.light {
+  color: $light;
+}
+
+.primary-bg {
+  background-color: $primary;
+}
+
+.primary {
+  color: $primary;
+}
+
+.blue {
+  color: $blue;
+}
+
+.blue-bg {
+  background-color: $blue;
+}
+
+.red {
+  color: $red;
+}
+
+.red-bg {
+  background-color: $red;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.yellow-bg {
+  background-color: $yellow;
+}
+
+.green {
+  color: $green;
+}
+
+.green-bg {
+  background-color: $green;
+}
+
+.purple {
+  color: $purple;
+}
+
+.purple-bg {
+  background-color: $purple;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #efefef;
+}
+
+body {
+  font: normal normal 400 14px/1.5em "Open Sans",Helevetica,Arial,sans-serf;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+*, *:after, *:before {
+  @include box-sizing(border-box);
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,strong {
+  font-weight: 700
+}
+
+h1 {
+  font-size: 2em;
+  margin: .67em 0
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: .83em 0
+}
+
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0
+}
+
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0
+}
+
+h5 {
+  font-size: .83em;
+  margin: 1.67em 0
+}
+
+h6 {
+  font-size: .75em;
+  margin: 2.33em 0
+}
+
+hr {
+  height: 1px;
+  border: none;
+  @include inline-block();
+  margin: 1em 0;
+  background-color: rgba(0,0,0,0.2);
+  width: 100%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  th, th[align="left"] {
+    text-align: left;
+  }
+  th[align="center"] {
+    text-align: center;
+  }
+  th[align="right"] {
+    text-align: right;
+  }
+}
+
+// some default placeholder style
+@include placeholder {
+  color: rgba(0,0,0,0.3);
+}
+
+form.form {
+  &, label, input, button, select, textarea {
+    @include inline-block();
+    width: 100%;
+    // these font styles are not inherited from the body!!
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  input, button, select, textarea {
+    outline: none;
+    border: none;
+    margin-bottom: 1em;
+    padding: 0.4em;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: border 0.2s ease;
+    &:focus {
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+  }
+  input[type="submit"], button {
+    width: auto;
+    padding: 0.4em 1em;
+    &:hover {
+      background: black;
+    }
+  }
+  textarea {
+    resize: none;
+    max-width: 100%; // no annoying >100% stretching
+  }
+}
+
+.center {
+  text-align: center;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.container, header, nav, .content {
+  @include inline-block();
+  width: 100%;
+}
+
+.container {
+  min-width: 1120px;
+}
+
+header {
+  padding: 0.5em 1em;
+  @include linear-gradient($light, darken($light, 10%));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 1;
+  a {
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    &:first-child {
+      float: left;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s ease;
+    }
+    &:last-child {
+      float: right;
+    }
+    &:hover, &:active {
+      color: rgba(255,255,255,1);
+    }
+  }
+}
+
+nav {
+  padding: 1.5em 0;
+  background: $secondary;
+  text-align: center;
+  a {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    margin: 0 2.5%;
+    @include inline-block();
+    span {
+      display: block;
+      &.oi {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+      }
+      &.indicator {
+        display: block;
+        color: lighten($secondary, 30%);
+        opacity: 0;
+        margin-bottom: -1.4em;
+        text-shadow: none;
+        font-size: 10px;
+        position: relative;
+        top: 4px;
+      }
+    }
+    &:hover, &:active {
+      text-shadow: 0 1px 0 rgba(0,0,0,0.8);
+    }
+    &.active span.indicator {
+      opacity: 1;
+    }
+  }
+}
+
+.content {
+  padding: 1em 2em 4em;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-width: 80%;
+  margin: 0 10%;
+  background: white;
+  a {
+    color: desaturate($primary, 20%);
+    transition: color 0.2s ease;
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.breadcrumb ul {
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  li, span {
+    list-style: none;
+    float: left;
+    @include inline-block();
+  }
+  span {
+    font-size: 0.8em;
+    line-height: 2.2;
+    margin: 0 0.5em;
+  }
+}
+
+.editor-controls {
+  margin: 1em 0;
+  a {
+    @include inline-block();
+    padding: 0.5em 1em;
+    border: 1px solid #ccc;
+    margin-right: calc(0em - 5px);
+    position: relative;
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+    &:last-child, &.last {
+      margin: 0;
+      border-radius: 0 4px 4px 0;
+    }
+    &:active, &.active {
+      color: white;
+      background: $dark;
+      border-color: #888;
+    }
+    &:hover {
+      border-color: #aaa;
+      z-index: 1;
+    }
+  }
+  .toggle-controls {
+    float: right;
+  }
+}
+
+a, button[type="button"], input[type="submit"] {
+  &.btn {
+    @include inline-block();
+    padding: 1em 1.4em;
+    margin: 0 0 0 0;
+    border-radius: 4px;
+    background: #aaa;
+    color: white !important;
+    font-weight: bold;
+    border: none;
+    outline: 0;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    @include fadeIn(0.8);
+    &.blue {
+      background-color: $blue
+    }
+    &.red {
+      background-color: $red
+    }
+    &.yellow {
+      background-color: $yellow
+    }
+    &.green {
+      background-color: $green
+    }
+    &.purple {
+      background-color: $purple
+    }
+    &.small {
+      font-size: 0.8em;
+      line-height: 1.2;
+      padding: 0.5em 1em 0.6em;
+    }
+    &.right {
+      float: right
+    }
+    &.left {
+      float: left
+    }
+    // obey styles for hint
+    &[class*="hint"] {
+      &:before, &:after {
+        font-weight: normal;
+      }
+    }
+    &.disabled, &[disabled] {
+      opacity: 1 !important;
+      background-color: #ccc !important;
+    }
+  }
+}
+
+.item-list {
+  margin: 2em 0 4em;
+  border: 1;
+  td, th {
+    padding: 0.4em 0.6em;
+    border: 1px solid #DDD;
+  }
+  th {
+    padding: 0.6em;
+  }
+  input[type="checkbox"] {
+    position: relative;
+    top: -2px;
+  }
+  .actions {
+    text-align: center;
+  }
+}
+
+.plugins .item-list {
+  td, th {
+    vertical-align: top;
+    &[align="center"] {
+      vertical-align: middle;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.settings .item-list {
+  margin: 2em 0;
+}
+
+.editor-buttons {
+  .publish-btn {
+    margin-right: 1em;
+  }
+  .delete-btn {
+    float: right;
+  }
+}
+
+.editor-wrap {
+  position: relative;
+  margin: 2em 0;
+}
+
+.editor-code {
+  border: 1px solid white;
+  min-height: 400px;
+  font-family: monospace;
+  &:hover {
+    border: 1px solid rgba(0,0,0,0.2);
+  }
+}
+
+.pane {
+  display: none;
+}
+
+#preview {
+  height: 400px;
+  overflow-y: scroll;
+  margin-top: 1em;
+  border: 1px solid white;
+}
+
+.columns-6 {
+  &.photo-list {
+    .photo-item {
+      width: 16.6%;
+    }
+  }
+}
+
+.columns-4 {
+  &.photo-list {
+    .photo-item {
+      width: 25%;
+    }
+  }
+}
+
+.columns-2 {
+  &.photo-list {
+    .photo-item {
+      width: 50%;
+    }
+  }
+}
+
+.photo-item {
+  text-align: center;
+  @include inline-block();
+  padding: 1em;
+  background: rgba(0,0,0,0);
+  cursor: pointer;
+  border: 1px solid white;
+  transition: all 0.2s ease;
+  margin-right: -4px;
+  &:last-child {
+    margin-right: 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  input[type="checkbox"] {
+    position: relative;
+    top: -1px;
+    margin-left: -1em;
+    opacity: 0;
+  }
+  &:hover {
+    background: rgba(0,0,0,0.05);
+  }
+  &.selected {
+    border: 1px solid rgba(0,0,0,0.12);
+    background: rgba(0,0,0,0.1);
+  }
+}
+
+.range-input {
+  position: relative;
+  top: 0.5em;
+  margin: 1em;
+  span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: $light;
+    margin-left: 0.5em;
+  }
+}
+
+.input-100 {
+  width: 100%;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  resize: none;
+  -webkit-backface-visibility: hidden;
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}
+
+.input-hidden {
+  width: 320px;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  resize: none;
+  -webkit-backface-visibility: hidden;
+  background: none;
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}
+
+textarea.input-100 {
+  min-height: 140px;
+}
+
+.vex {
+  h3 {
+    border-bottom: 1px solid #ccc;
+  }
+  ul {
+    margin: 0 0 2em 1em;
+    padding: 0;
+    li {
+      list-style: none;
+      @include inline-block();
+      width: 100%;
+      strong {
+        min-width: 70px;
+        @include inline-block();
+      }
+    }
+  }
+}
+
+/*======= github markdown styles start ======*/
+@import "imports/_github";
+/*======== github markdown styles end =======*/
+
+@media screen and (max-width: 1120px) {
+  .container {
+    min-width: 810px;
+  }
+  .content {
+    max-width: 90%;
+    margin: 0 5%;
+  }
+  .editor-controls {
+    font-size: 0.8em;
+    a {
+      margin-right: calc(0em - 4px);
+    }
+  }
+  .editor-buttons, .pane {
+    font-size: 0.9em;
+  }
+}
