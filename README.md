@@ -7,6 +7,12 @@ This is the new version of the [PhileCMS](https://github.com/PhileCMS/Phile) adm
 
 You can download the old release [here](https://github.com/james2doyle/phileAdmin/releases/tag/0.9).
 
+### Installation
+
+Make sure the folder is named adminPanel and drop it into `plugins/phile/`. Then move `upload-htaccess` `to content/uploads/.htaccess`.
+
+## Features
+
 Here is what is working so far:
 
 ### Pages
@@ -50,4 +56,3 @@ Here is what is working so far:
 
 * list settings
 * list required fields for new pages
-
