@@ -20,7 +20,7 @@
 		<div class="drop-icon"><span class="oi" data-glyph="data-transfer-upload"></span></div>
 	</form>
 	<div class="photo-list columns-6">
-		<?php if(count($photos) > 0):
+		<?php if($photos !== false):
 		foreach($photos as $photo): ?>
 			<div class="photo-item" id="<?php echo $photo->slug ?>">
 				<img src="<?php echo $photo->url ?>" width="<?php echo $photo->info[0] ?>" height="<?php echo $photo->info[1] ?>">
