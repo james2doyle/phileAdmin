@@ -42,6 +42,9 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 				if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 					$page = new Pages($this->settings);
 					// redirect missing pages to the home page
+					if (!isset($uri[1]) || $uri[1] === '') {
+						$uri[1] = $this->settings['nav'][0]['url'];
+					}
 					if (method_exists($page, $uri[1])) {
 						$page->{$uri[1]}();
 					} else {
