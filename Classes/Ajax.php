@@ -59,7 +59,7 @@ class Ajax {
 	{
 		foreach ($this->data as $value) {
 			if (preg_match('/^content/', $value)) {
-				$value = str_replace('content/', '', $value);
+				$value = str_replace('content'.DIRECTORY_SEPARATOR, '', $value);
 				$file = CONTENT_DIR . $value;
 			} else {
 				$file = ROOT_DIR . $value;
