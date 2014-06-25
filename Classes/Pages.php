@@ -98,12 +98,14 @@ class Pages {
 
 	public function photos() {
 		$photos = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/images', '/^.*\.('. $this->settings['image_types'] .')$/');
-		if (count($photos) !== 0) {
-			$image_obj;
-			// new objects for each image
-			foreach ($photos as $key => $value) {
-				$image_obj[$key] = Utilities::photo_info($value, $this->config['base_url']);
-			}
+		
+		$image_obj = array();
+		// new objects for each image
+		foreach ($photos as $key => $value) {
+			$image_obj[$key] = Utilities::photo_info($value, $this->config['base_url']);
+		}
+			
+		if(count($image_obj) > 0) {
 			$data = array_merge(array(
 				'title' => 'Photos',
 				'body_class' => 'photos',
@@ -116,20 +118,24 @@ class Pages {
 				'photos' => false
 				), $this->settings);
 		}
+		
 		Utilities::render('photos.php', $data);
 	}
 
 	public function files() {
 		$files = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/files');
-		if(count($files) !== 0) {
-			$file_obj;
-			// new objects for each image
-			foreach ($files as $key => $value) {
-				// ignore dotfiles
-				if(strpos(basename($value), '.') !== (int)0) {
-					$file_obj[$key] = Utilities::file_info($value, $this->config['base_url']);
-				}
+		
+		$file_obj = array();
+		
+		// new objects for each file
+		foreach ($files as $key => $value) {
+			// ignore dotfiles
+			if(strpos(basename($value), '.') !== (int)0) {
+				$file_obj[$key] = Utilities::file_info($value, $this->config['base_url']);
 			}
+		}
+		
+		if(count($file_obj) > 0) {
 			$data = array_merge(array(
 				'title' => 'Files',
 				'body_class' => 'files',
@@ -142,6 +148,7 @@ class Pages {
 				'files' => false
 				), $this->settings);
 		}
+		
 		Utilities::render('files.php', $data);
 	}
 
