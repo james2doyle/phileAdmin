@@ -212,6 +212,7 @@ $(document).ready(function() {
 			message: 'Give this file a name. Include the extension (.html or .md)',
 			placeholder: 'File name',
 			callback: function(value) {
+				if(value == false) return false;
 				$.post('save', {
 					path: url + value,
 					value: $('#editor-area').val()
