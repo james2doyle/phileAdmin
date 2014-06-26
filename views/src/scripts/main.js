@@ -189,6 +189,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$.post('save', {
 			path: $(this).attr('data-url'),
+			pageType: pageType,
 			value: $('#editor-area').val()
 		}).then(function(res) {
 			console.log(res);
@@ -209,19 +210,24 @@ $(document).ready(function() {
 		event.preventDefault();
 		var url = $(this).attr('data-url');
 		vex.dialog.prompt({
-			message: 'Give this file a name. Include the extension (.html or .md)',
+			message: 'Give this file a name:',
 			placeholder: 'File name',
 			callback: function(value) {
 				if(value == false) return false;
+				if(value.indexOf('-') === -1) {
+					value += $('#default-extension').val()
+				}
 				$.post('save', {
 					path: url + value,
+					filename: value,
+					pageType: pageType,
 					value: $('#editor-area').val()
 				}).then(function(res) {
 					console.log(res);
 					vex.dialog.alert(res.message);
 					setTimeout(function() {
 						vex.close();
-						window.location.href = 'edit?url='+value.split('.')[0]+'&type=' + pageType;
+						window.location.href = 'edit?url='+res.path+'&type=' + pageType;
 					}, 1500);
 				}, function(err) {
 					console.log(err);
