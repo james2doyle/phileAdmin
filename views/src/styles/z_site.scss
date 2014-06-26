@@ -428,6 +428,11 @@ a, button[type="button"], input[type="submit"] {
   th {
     padding: 0.6em;
   }
+  input[type="text"] {
+    &:hover, &:focus {
+      background-color: #fffddd;
+	}
+  }
   input[type="checkbox"] {
     position: relative;
     top: -2px;
@@ -458,6 +463,9 @@ a, button[type="button"], input[type="submit"] {
     margin-right: 1em;
   }
   .delete-btn {
+    float: right;
+  }
+  .cancel-btn {
     float: right;
   }
 }

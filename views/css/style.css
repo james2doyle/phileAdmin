@@ -2579,6 +2579,12 @@ a.btn, button[type="button"].btn, input[type="submit"].btn {
     border: 1px solid #DDD; }
   .item-list th {
     padding: 0.6em; }
+  .item-list input[type="text"]:hover{
+    background-color: #fffddd;
+  }
+  .item-list input[type="text"]:focus{
+    background-color: #fffddd;
+  }
   .item-list input[type="checkbox"] {
     position: relative;
     top: -2px; }
@@ -2598,6 +2604,8 @@ a.btn, button[type="button"].btn, input[type="submit"].btn {
 .editor-buttons .publish-btn {
   margin-right: 1em; }
 .editor-buttons .delete-btn {
+  float: right; }
+.editor-buttons .cancel-btn {
   float: right; }
 
 .editor-wrap {
