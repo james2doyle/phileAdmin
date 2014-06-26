@@ -186,6 +186,7 @@ class Pages {
 		$get = Utilities::filter($_GET);
 		$url = $get['url'];
 		if ($get['type'] == 'page') {
+			$url = str_ireplace(CONTENT_EXT, '', $url);
 			// load the page we want to edit
 			$page = $this->pageRespository->findByPath($url);
 			// raw file contents
@@ -249,35 +250,39 @@ class Pages {
 			$template .= $this->settings['default_content'];
 			// timestamp the temporary file in case we have multiple pages being made at once
 			// create a temp file
-			Utilities::file_force_contents(CACHE_DIR . 'temp_pages/' . $filename . '.md', $template);
+			Utilities::file_force_contents(CACHE_DIR . 'temp_pages' . DIRECTORY_SEPARATOR . $filename . '.md', $template);
 			// load this file
-			$page = $this->pageRespository->findByPath($filename, CACHE_DIR . 'temp_pages/');
+			$page = $this->pageRespository->findByPath($filename, CACHE_DIR . 'temp_pages' . DIRECTORY_SEPARATOR);
 			// raw contents
 			$page->markdown = file_get_contents($page->getFilePath());
+			// default file extension
+			$page->extension = ".md";
 			// $page->content = $page->getContent();
 			$data = array_merge(array(
 				'title' => 'Create',
 				'body_class' => 'create-page',
 				'current_page' => $page,
 				'type' => $get['type'],
-				'save_path' => CONTENT_DIR.'/',
+				'save_path' => CONTENT_DIR . DIRECTORY_SEPARATOR,
 				'is_temp' => true
 				), $this->settings);
 		} else {
 			// create a temp file
-			Utilities::file_force_contents(CACHE_DIR . 'temp_'.$get['type'].'s/' . $filename . '.html', file_get_contents(THEMES_DIR . $this->config['theme'].'/index.html'));
+			Utilities::file_force_contents(CACHE_DIR . 'temp_'.$get['type'].'s' . DIRECTORY_SEPARATOR . $filename . '.html', file_get_contents(THEMES_DIR . $this->config['theme']. DIRECTORY_SEPARATOR . 'index.html'));
 			$page = new \stdClass;
 			$page->content = 'This page has no content';
 			$page->title = $filename. '.html';
 			// raw contents
-			$page->markdown = file_get_contents(CACHE_DIR . 'temp_templates/' . $filename . '.html');
-			$page->path = CACHE_DIR . 'temp_templates/' . $filename . '.html';
+			$page->markdown = file_get_contents(CACHE_DIR . 'temp_templates' . DIRECTORY_SEPARATOR	 . $filename . '.html');
+			// default file extension
+			$page->extension = ".html";
+			$page->path = CACHE_DIR . 'temp_templates' . DIRECTORY_SEPARATOR . $filename . '.html';
 			$data = array_merge(array(
 				'title' => 'Create',
 				'body_class' => 'create-page',
 				'current_page' => $page,
 				'type' => $get['type'],
-				'save_path' => THEMES_DIR . $this->config['theme'].'/',
+				'save_path' => THEMES_DIR . $this->config['theme'] . DIRECTORY_SEPARATOR,
 				'is_temp' => true
 				), $this->settings);
 		}
