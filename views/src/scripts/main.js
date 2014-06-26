@@ -76,6 +76,7 @@ $(document).ready(function() {
 	function deleteItems($parent) {
 		var plugins = $('body').hasClass('plugins');
 		var count = $parent.find('input').filter(':checked').length;
+		if(count == 0) return false;
 		vex.dialog.confirm({
 			message: 'Are you absolutely sure you want to ' + ((plugins) ? 'toggle' : 'delete') + ' ' + count + ' item' + ((count > 1) ? 's' : '') + '?',
 			callback: function(value) {
