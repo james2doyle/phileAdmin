@@ -53,7 +53,7 @@
 			<?php else: ?>
 				<button type="button" id="save-file" data-url="<?php echo $current_page->path ?>" class="btn publish-btn blue">Save</button>
 			<?php endif; ?>
-			<button type="button" id="delete-file" class="btn delete-btn red" data-url="<?php echo (method_exists($current_page, 'getFilePath')) ? $current_page->getFilePath(): $current_page->path; ?>">Delete</button>
+			<button type="button" id="cancel-edit" class="btn cancel-btn gray">Cancel</button>
 		</div>
 	</section>
 	<?php include 'partials/footer.php'; ?>

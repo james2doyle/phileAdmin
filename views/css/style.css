@@ -2605,6 +2605,8 @@ a.btn, button[type="button"].btn, input[type="submit"].btn {
   margin-right: 1em; }
 .editor-buttons .delete-btn {
   float: right; }
+.editor-buttons .cancel-btn {
+  float: right; }
 
 .editor-wrap {
   position: relative;

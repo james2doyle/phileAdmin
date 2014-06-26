@@ -12818,6 +12818,9 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	$('#cancel-edit').on('click', function(event) {
+		window.history.back();
+	});
 	$('#delete-file').on('click', function(event) {
 		event.preventDefault();
 		$.post('delete', {
