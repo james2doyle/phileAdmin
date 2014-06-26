@@ -38,6 +38,7 @@
 		<div class="editor-wrap">
 			<form id="code" class="pane form" style="display: block">
 				<?php if($type == 'page'): ?><small>There is a 500ms delay on the Markdown render function.</small><?php endif; ?>
+				<input type="hidden" name="default-extension" id="default-extension" value="<?php if(isset($current_page->extension)) { echo $current_page->extension; } ?>"/>
 				<textarea class="editor-code" id="editor-area"><?php echo $current_page->markdown; ?></textarea>
 			</form>
 			<div id="preview" class="pane">

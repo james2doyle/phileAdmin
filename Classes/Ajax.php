@@ -59,10 +59,13 @@ class Ajax {
 	{
 		foreach ($this->data as $value) {
 			if (preg_match('/^content/', $value)) {
-				$value = str_replace('content'.DIRECTORY_SEPARATOR, '', $value);
+				$value = str_replace('content/', '', $value);
 				$file = CONTENT_DIR . $value;
 			} else {
 				$file = ROOT_DIR . $value;
+			}
+			if(!file_exists($file)){
+				$value = str_replace('/', DIRECTORY_SEPARATOR, $value);
 			}
 			if(unlink($file)) {
 				$this->send_json(array(
@@ -197,10 +200,22 @@ class Ajax {
 		$safe_filename = str_replace($path['filename'], Utilities::slugify($path['filename']), $this->data['path']);
 		// use raw textarea value
 		$write = file_put_contents($safe_filename, $_POST['value']);
+		
+		if($this->data['pageType'] == 'template') {
+			$received_filename = str_replace(ROOT_DIR, '', $this->data['path']);
+		} else {
+			if(isset($this->data['filename'])) {
+				$received_filename = $this->data['filename'];
+			} else {
+				$received_filename = $path['filename'];
+			}
+		}
+		
 		if ($write) {
 			$this->send_json(array(
 				'status' => true,
-				'message' => 'Saved ' . $path['filename']
+				'message' => 'Saved ' . $path['filename'],
+				'path' => str_replace($path['filename'], Utilities::slugify($path['filename']), $received_filename)
 				));
 		} else {
 			$this->send_json(array(

@@ -123,15 +123,17 @@ class Utilities {
 	 * @return int           the number of bytes written
 	 */
 	public static function file_force_contents($dir, $contents){
-		$parts = explode('/', $dir);
+
+		$parts = explode(DIRECTORY_SEPARATOR, $dir);
 		$file = array_pop($parts);
-		$dir = '';
-		foreach($parts as $part) {
-			if(!is_dir($dir .= "/$part")) {
-				mkdir($dir);
-			}
+		$dir = implode(DIRECTORY_SEPARATOR, $parts);
+		
+		if (!is_dir($dir)) {
+			// creates each directory recursively (using default chmod)
+			mkdir($dir, 0777, TRUE);
 		}
-		return file_put_contents("$dir/$file", $contents);
+		
+		return file_put_contents($dir . DIRECTORY_SEPARATOR . $file, $contents);
 	}
 
 	public static function array_to_object($array) {
