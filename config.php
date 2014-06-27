@@ -12,14 +12,10 @@ return array(
     'url' => 'http://github.com/james2doyle/phileAdmin',
     'version' => '1.0.0'
     ),
-  'users' => array(
-    array(
-      'username' => 'james2doyle',
-      'display_name' => 'James Doyle',
-      'role' => 'Admin',
-      'created' => '2014-05-22',
-      'logged_in' => date('Y-m-d'),
-      ),
+  'default_user' => array(
+      'username' => 'admin',
+      'display_name' => 'Phile Admin',
+	  'password' => '' // empty means that encryptionKey will be used as a password
     ),
   'origin' => '../plugins/phile/adminPanel/views',
   'homepage' => 'http://localhost:8888/PhileCMS',

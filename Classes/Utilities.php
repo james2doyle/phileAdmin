@@ -189,5 +189,52 @@ class Utilities {
 			return true;
 		}
 	}
+	
+	public static function generateHash($value)
+	{
+		$config = \Phile\Registry::get('Phile_Settings');
+		$encryptionKey = $config['encryptionKey'];
+		return sha1($value . $encryptionKey);
+	}
+	
+	public static function encodeData($value, $key = NULL)
+	{
+		if($key == NULL) $key = Utilities::generateHash('');
+		
+		$j      = 0;
+		$hash   = '';
+		$value  = gzcompress(bin2hex($value));
+		$strLen = strlen($value);
+		$keyLen = strlen($key);
+		for ($i = 0; $i < $strLen; $i++) {
+			$ordStr = ord(substr($value,$i,1));
+			if ($j == $keyLen) { $j = 0; }
+			$ordKey = ord(substr($key,$j,1));
+			$j++;
+			$hash .= strrev(base_convert(dechex($ordStr + $ordKey),16,36));
+		}
+		
+		return gzcompress($hash);
+	}
+	
+	public static function decodeData($value, $key = NULL)
+	{
+		if($key == NULL) $key = Utilities::generateHash('');
+		
+		$j      = 0;
+		$hash   = '';
+		$value  = gzuncompress($value);
+		$strLen = strlen($value);
+		$keyLen = strlen($key);
+		for ($i = 0; $i < $strLen; $i+=2) {
+			$ordStr = hexdec(base_convert(strrev(substr($value,$i,2)),36,16));
+			if ($j == $keyLen) { $j = 0; }
+			$ordKey = ord(substr($key,$j,1));
+			$j++;
+			$hash .= chr($ordStr - $ordKey);
+		}
+		
+		return hex2bin(gzuncompress($hash));
+	}		
 
 }

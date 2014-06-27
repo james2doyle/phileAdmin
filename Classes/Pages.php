@@ -37,7 +37,14 @@ class Pages {
 		$this->config = \Phile\Registry::get('Phile_Settings');
 	}
 
-	public function pages() {
+	public function login()
+	{
+		\Phile\Session::set('PhileAdmin_logged', null);
+		Utilities::render('login.php', array_merge(array('title' => 'Login', 'body_class' => 'templates'), $this->settings));
+	}
+	
+	public function pages()
+	{
 		$data = array_merge(array(
 			'title' => 'Pages',
 			'body_class' => 'pages',
@@ -46,7 +53,7 @@ class Pages {
 		Utilities::render('pages.php', $data);
 	}
 
-	public function fourofour()
+	public function fourofour() 
 	{
 		$data = array_merge(array(
 			'title' => '404',
@@ -55,7 +62,8 @@ class Pages {
 		Utilities::render('404.php', $data, true, '404');
 	}
 
-	public function templates() {
+	public function templates()
+	{
 		$templates = \Phile\Utility::getFiles(THEMES_DIR . $this->config['theme'], '/^.*\.(html)$/');
 		$template_obj;
 		// new objects for each template
@@ -73,7 +81,8 @@ class Pages {
 		Utilities::render('templates.php', $data);
 	}
 
-	public function plugins() {
+	public function plugins()
+	{
 		$plugins = $this->config['plugins'];
 		$plugin_obj = array();
 		// new objects for each plugin
@@ -96,7 +105,8 @@ class Pages {
 		Utilities::render('plugins.php', $data);
 	}
 
-	public function photos() {
+	public function photos()
+	{
 		$photos = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/images', '/^.*\.('. $this->settings['image_types'] .')$/');
 		
 		$image_obj = array();
@@ -122,7 +132,8 @@ class Pages {
 		Utilities::render('photos.php', $data);
 	}
 
-	public function files() {
+	public function files()
+	{
 		$files = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/files');
 		
 		$file_obj = array();
@@ -171,16 +182,6 @@ class Pages {
 		Utilities::render('config.php', $data);
 	}
 
-	public function users() {
-		$users = Utilities::array_to_object($this->settings['users']);
-		$data = array_merge(array(
-			'title' => 'Users',
-			'body_class' => 'users',
-			'safe_users' => $users,
-			), $this->settings);
-		Utilities::render('users.php', $data);
-	}
-
 	public function edit()
 	{
 		$get = Utilities::filter($_GET);
@@ -211,7 +212,8 @@ class Pages {
 		Utilities::render('editor.php', $data);
 	}
 
-	public function settings() {
+	public function settings()
+	{
 		$safe_settings = array();
 		// lets generate a config that is safe for the frontend to edit and display
 		foreach ($this->settings as $key => $value) {
@@ -233,7 +235,8 @@ class Pages {
 		Utilities::render('settings.php', $data);
 	}
 
-	public function create() {
+	public function create()
+	{
 		$get = Utilities::filter($_GET);
 		$date = new \DateTime();
 		$filename = 'temp-' . $date->getTimestamp();
@@ -311,6 +314,64 @@ class Pages {
 			// Don't continue to render template
 			exit;
 		}
+	}
+	
+	/* USERS INTERFACES */
+	
+	public function users()
+	{
+		// get information about each user...
+		$users = Users::get_all_users();
+		$data = array_merge(array(
+			'title' => 'Users',
+			'body_class' => 'users',
+			'safe_users' => $users,
+			), $this->settings);
+		Utilities::render('users.php', $data);
+	}
+	
+	public function create_user()
+	{
+		$data = array_merge(array(
+			'user' => array(
+				'id' => '',
+				'username' => '',
+				'displayname' => '',
+				'email' => ''
+			),
+			'user_not_found' => false,
+			'user_name' => 'New User',
+			'title' => 'Create User',
+			'body_class' => 'create-user',
+		), $this->settings);
+		
+		Utilities::render('users-editor.php', $data);
+	}
+	
+	public function edit_user()
+	{
+		$get = Utilities::filter($_GET);
+		
+		$user = Users::get_user_by_hash($get['id']);
+		
+		// user not found
+		if($user === false) {
+			header("location: users"); exit;
+		}
+		
+		$data = array_merge(array(
+			'user' => array(
+				'id' => $user->user_id,
+				'username' => $user->username,
+				'displayname' => $user->display_name,
+				'email' => $user->email
+			),
+			'user_name' => $user->display_name,
+			'title' => 'Edit User',
+			'body_class' => 'create-user',
+		), $this->settings);
+		
+		Utilities::render('users-editor.php', $data);		
 	}
 
 }

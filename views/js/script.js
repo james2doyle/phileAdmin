@@ -12826,6 +12826,54 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	
+	$('#login').on('click', function(event) {
+		event.preventDefault();
+		$.post('validate_login', {
+			username: $('#username').val(),
+			password: $('#password').val()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				window.location.href = '';
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
+	
+	$('#save-user').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_user', {
+			user_id: $('#user_id').val(),
+			username: $('#user_username').val(),
+			display_name: $('#user_displayname').val(),
+			email: $('#user_email').val(),
+			password: $('#user_password').val()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				window.location.href = 'users';
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
+	
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});

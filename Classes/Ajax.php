@@ -61,6 +61,9 @@ class Ajax {
 			if (preg_match('/^content/', $value)) {
 				$value = str_replace('content/', '', $value);
 				$file = CONTENT_DIR . $value;
+			} elseif (preg_match('/^users/', $value)) {
+				$value = str_replace('users/', '', $value . '.json');
+				$file = Users::get_users_path() . $value;
 			} else {
 				$file = ROOT_DIR . $value;
 			}
@@ -242,5 +245,63 @@ class Ajax {
 				));
 		}
 	}
+	
+	/* USER FUNCTIONS */
+	
+	public function save_user()
+	{
+		$user = new \stdClass();
+		$user->user_id = $this->data['user_id'];
+		$user->username = $this->data['username'];
+		$user->display_name = $this->data['display_name'];
+		$user->email = $this->data['email'];
+		$user->password = $this->data['password'];
+		
+		$save_user = Users::save_user($user);
+		
+		if($save_user === true) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => "User was successfully been saved"
+				));			
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => $save_user
+				));
+		}
+		
+	}
+	
+	public function validate_login()
+	{
+		$user = new \stdClass();
+		$user->username = $this->data['username'];
+		$user->password = $this->data['password'];
 
+		
+		
+		$validate_login = Users::validate_login($this->data['username'], $this->data['password']);
+		
+		if($validate_login) {
+			$user = Users::get_user_by_username($this->data['username']);
+			Users::update_last_login($user->user_id);
+			
+			\Phile\Session::set('PhileAdmin_logged', $user);
+			
+			$this->send_json(array(
+				'status' => true,
+				'message' => "Logged as " . $this->data['username']
+			));
+				
+		} else {
+			\Phile\Session::set('PhileAdmin_logged', null);
+			
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Invalid login'
+			));
+		}
+	}
+	
 }
