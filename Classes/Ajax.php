@@ -262,7 +262,7 @@ class Ajax {
 		if($save_user === true) {
 			$this->send_json(array(
 				'status' => true,
-				'message' => "User was successfully been saved"
+				'message' => "User saved"
 				));			
 		} else {
 			$this->send_json(array(
@@ -302,6 +302,84 @@ class Ajax {
 				'message' => 'Invalid login'
 			));
 		}
+	}
+	
+	public function save_settings()
+	{
+		$params = $this->data['settings'];
+		$settings = array();
+		parse_str(htmlspecialchars_decode($params), $settings);
+		$new_settings = $settings['safe_settings'];
+		
+		// new fields added dynamically
+		if(isset($settings['safe_settingsXkey'])){
+			foreach($settings['safe_settingsXkey'] as $key=>$value){
+				if(!empty($value)) {
+					$new_settings[$value] = $settings['safe_settingsXvalue'][$key];
+				}
+			}
+		}
+		
+		$new_settings['required_fields'] = array();
+		foreach($settings['required_fields'] as $key=>$value){
+			$new_settings['required_fields'][] = array('name' => $key, 'default' => $value);
+		}
+		
+		// new fields added dynamically
+		if(isset($settings['required_fieldsXkey'])){
+			foreach($settings['required_fieldsXkey'] as $key=>$value){
+				if(!empty($value)) {
+					$new_settings['required_fields'][] = array('name' => $value, 'default' => $settings['required_fieldsXvalue'][$key]);
+				}
+			}
+		}
+		
+		$saved = file_put_contents(str_ireplace(DIRECTORY_SEPARATOR . 'Classes', '', __DIR__) . DIRECTORY_SEPARATOR . 'config.json', json_encode($new_settings));
+		
+		if($saved !== false) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Settings saved'
+				));			
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error saving settings'
+				));
+		}
+		
+	}
+	
+	public function save_config()
+	{
+		$params = $this->data['config'];
+		$config = array();
+		parse_str(htmlspecialchars_decode($params), $config);
+		$new_config = $config['config'];
+		
+		// new fields added dynamically
+		if(isset($config['configXkey'])){
+			foreach($config['configXkey'] as $key=>$value){
+				if(!empty($value)) {
+					$new_config[$value] = $config['configXvalue'][$key];
+				}
+			}
+		}
+		
+		$saved = file_put_contents('config.json', json_encode($new_config));
+		
+		if($saved !== false) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Config saved'
+				));			
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error saving config'
+				));
+		}
+		
 	}
 	
 }

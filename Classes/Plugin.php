@@ -52,8 +52,10 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 				
 				\Phile\Session::set('PhileAdmin_logged', $user);
 				
-				header("location: admin/edit_user?id={$user->user_id}");
-				exit;
+				// force edit new user (redirect doesn't work properly due to browser cache)
+				$uri = array(0 => 'admin', 1 => 'edit_user');
+				$_SERVER['REQUEST_METHOD'] = 'GET';
+				$_GET['id'] = $user->user_id;
 			}
 			
 			if(\Phile\Session::get('PhileAdmin_logged') == null) {

@@ -186,6 +186,7 @@ class Pages {
 	{
 		$get = Utilities::filter($_GET);
 		$url = $get['url'];
+		$body_class = '';
 		if ($get['type'] == 'page') {
 			$url = str_ireplace(CONTENT_EXT, '', $url);
 			// load the page we want to edit
@@ -193,6 +194,7 @@ class Pages {
 			// raw file contents
 			$page->markdown = file_get_contents($page->getFilePath());
 			$get['type'] = 'page';
+			$body_class = 'pages';
 		} else {
 			// load the page we want to edit
 			$page = new \stdClass;
@@ -201,10 +203,11 @@ class Pages {
 			// raw file contents
 			$page->markdown = file_get_contents(ROOT_DIR . $url);
 			$page->path = ROOT_DIR . $url;
+			$body_class = 'templates';
 		}
 		$data = array_merge(array(
 			'title' => 'Edit',
-			'body_class' => 'edit-page',
+			'body_class' => $body_class,
 			'current_page' => $page,
 			'type' => $get['type'],
 			'is_temp' => false
@@ -216,6 +219,7 @@ class Pages {
 	{
 		$safe_settings = array();
 		// lets generate a config that is safe for the frontend to edit and display
+		
 		foreach ($this->settings as $key => $value) {
 			// skip arrays and objects since we cant handle them as key => value
 			// skip items in the unsafe array
@@ -229,8 +233,7 @@ class Pages {
 			'title' => 'Settings',
 			'body_class' => 'settings',
 			'safe_settings' => $safe_settings,
-			'required_fields' => $this->settings['required_fields'],
-			'default_content' => $this->settings['default_content'],
+			'required_fields' => $this->settings['required_fields']
 			), $this->settings);
 		Utilities::render('settings.php', $data);
 	}
@@ -250,7 +253,6 @@ class Pages {
 				$template .= ucfirst($field['name']).": ".$field['default']."\n";
 			}
 			$template .= "-->\n\n";
-			$template .= $this->settings['default_content'];
 			// timestamp the temporary file in case we have multiple pages being made at once
 			// create a temp file
 			Utilities::file_force_contents(CACHE_DIR . 'temp_pages' . DIRECTORY_SEPARATOR . $filename . '.md', $template);
@@ -342,7 +344,7 @@ class Pages {
 			'user_not_found' => false,
 			'user_name' => 'New User',
 			'title' => 'Create User',
-			'body_class' => 'create-user',
+			'body_class' => 'users',
 		), $this->settings);
 		
 		Utilities::render('users-editor.php', $data);
@@ -368,7 +370,7 @@ class Pages {
 			),
 			'user_name' => $user->display_name,
 			'title' => 'Edit User',
-			'body_class' => 'create-user',
+			'body_class' => 'users',
 		), $this->settings);
 		
 		Utilities::render('users-editor.php', $data);		

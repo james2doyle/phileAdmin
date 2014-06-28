@@ -255,13 +255,13 @@ header {
     color: white;
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    &:last-child {
+      float: right;
+    }
     &:first-child {
       float: left;
       color: rgba(255,255,255,0.8);
       transition: color 0.2s ease;
-    }
-    &:last-child {
-      float: right;
     }
     &:hover, &:active {
       color: rgba(255,255,255,1);
@@ -434,7 +434,7 @@ a, button[type="button"], input[type="submit"] {
   th {
     padding: 0.6em;
   }
-  input[type="text"] {
+  input[type="text"], input[type="password"] {
     &:hover, &:focus {
       background-color: #fffddd;
 	}
@@ -445,6 +445,9 @@ a, button[type="button"], input[type="submit"] {
   }
   .actions {
     text-align: center;
+	a {
+	  cursor: pointer;
+	}
   }
 }
 
