@@ -40,6 +40,10 @@ if($config['plugins']['phile\\adminPanel']['active'] && file_exists('config.json
 return $config;
 ```
 
+### Handling Errors
+
+Before you create any issues or write off this plugin as broken, please check the `error_log` file located in the adminPanel root.
+
 ## Features
 
 Here is what is working so far:
