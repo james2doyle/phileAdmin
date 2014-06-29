@@ -27,6 +27,19 @@ Just go to `/admin` on your phile install and you will see it load up! The sessi
 
 The users data is fake.I am no security expert but maybe there is a good way to do users with Phile without using plaintext passwords and logins. Maybe something with single sign-on style?
 
+### Udate your config.php
+
+```php
+// merge config with json if PhileAdmin is installed
+if($config['plugins']['phile\\adminPanel']['active'] && file_exists('config.json')) {
+  $config = array_merge(
+    $config,
+    json_decode(file_get_contents('config.json'), true)
+  );
+}
+return $config;
+```
+
 ## Features
 
 Here is what is working so far:
@@ -64,12 +77,18 @@ Here is what is working so far:
 ### Config
 
 * list config
+* create and save key => values
+* delete items
 
 ### Users
 
-* list users (fake data)
+* list users
+* create and save
+* auto-create when no users are present
+* delete users
 
 ### Settings
 
 * list settings
 * list required fields for new pages
+* create, save and delete fields
