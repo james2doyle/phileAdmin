@@ -32,11 +32,12 @@ The users data is fake.I am no security expert but maybe there is a good way to 
 ```php
 // merge config with json if PhileAdmin is installed
 if($config['plugins']['phile\\adminPanel']['active'] && file_exists('config.json')) {
-  $config = array_merge(
-    $config,
-    json_decode(file_get_contents('config.json'), true)
-  );
+    $config = array_merge(
+        $config,
+        json_decode(file_get_contents('config.json'), true)
+    );
 }
+
 return $config;
 ```
 
