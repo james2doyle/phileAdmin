@@ -5,7 +5,7 @@ This is the new version of the [PhileCMS](https://github.com/PhileCMS/Phile) adm
 
 ## For Phile 0.9.*
 
-You can download the old release [here](https://github.com/james2doyle/phileAdmin/releases/tag/0.9).
+You can download the old release [here](https://github.com/james2doyle/phileAdmin/releases/tag/0.9). Please note, *I never finished the 0.9 version. It will not be supported anymore.*.
 
 ## For Phile 1.*
 
