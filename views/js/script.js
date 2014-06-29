@@ -12680,6 +12680,9 @@ $(document).ready(function() {
 	$('#delete-selected').on('click', function() {
 		deleteItems($('.item-list').find('tbody').find('tr'));
 	});
+	$('.delete-setting').on('click', function() {
+		$(this).parent().parent().remove();
+	});	
 	$('.content').on('click', '.photo-item', function() {
 		var $input = $(this).find('input');
 		// simple toggle of the checked attr
@@ -12714,11 +12717,13 @@ $(document).ready(function() {
 		vex.dialog.alert('<p class="center"><img src="' + url + '" /></p>');
 		return false;
 	});
-	$('#add-setting').on('click', function(event) {
+	var counterSettings = 0;
+	$('.add-setting').on('click', function(event) {
 		event.preventDefault();
-		var template = '<tr id="key"><td align="center"><input type="checkbox" class="row-select" value="key"></td><td><input type="text" name="" value="Key For New Setting" placeholder="Key For New Setting" class="input-100"></td><td><input type="text" name="" value="Value For New Setting" placeholder="Value For New Setting" class="input-100"></td></tr>';
-		var key = $('.item-list').find('tbody').append(template).find('tr').last().find('input')[1];
-		key.setSelectionRange(0, key.value.length);
+		counterSettings++;
+		var template = '<tr><td align="center" class="actions"><a class="btn red small hint--right delete-setting" data-hint="Delete Key"><span class="oi" data-glyph="delete"></span></a></td><td><input type="text" name="'+$(this).attr('data-url')+'key['+counterSettings+']" value="" placeholder="New Key Name" class="input-100"></td><td><input type="text" name="'+$(this).attr('data-url')+'value['+counterSettings+']" value="" placeholder="New Key Value" class="input-100"></td></tr>';
+		var tableID = '#'+$(this).attr('data-url');
+		$(tableID).find('tbody').append(template).find('tr').last().find('input')[1];
 		return false;
 	});
 	$('#file-info').on('click', function(event) {
@@ -12826,6 +12831,96 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	
+	$('#login').on('click', function(event) {
+		event.preventDefault();
+		$.post('validate_login', {
+			username: $('#username').val(),
+			password: $('#password').val()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				window.location.href = '';
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
+	
+	$('.save-settings').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_settings', {
+			settings : $("#form_settings").serialize()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				window.location.href = 'settings';
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving settings');
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
+	
+	$('.save-config').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_config', {
+			config : $("#form_config").serialize()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				window.location.href = 'config';
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving config');
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
+	
+	$('#save-user').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_user', {
+			user_id: $('#user_id').val(),
+			username: $('#user_username').val(),
+			display_name: $('#user_displayname').val(),
+			email: $('#user_email').val(),
+			password: $('#user_password').val()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				window.location.href = 'users';
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
+	
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});

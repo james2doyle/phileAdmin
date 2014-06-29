@@ -61,6 +61,9 @@ class Ajax {
 			if (preg_match('/^content/', $value)) {
 				$value = str_replace('content/', '', $value);
 				$file = CONTENT_DIR . $value;
+			} elseif (preg_match('/^users/', $value)) {
+				$value = str_replace('users/', '', $value . '.json');
+				$file = Users::get_users_path() . $value;
 			} else {
 				$file = ROOT_DIR . $value;
 			}
@@ -242,5 +245,141 @@ class Ajax {
 				));
 		}
 	}
+	
+	/* USER FUNCTIONS */
+	
+	public function save_user()
+	{
+		$user = new \stdClass();
+		$user->user_id = $this->data['user_id'];
+		$user->username = $this->data['username'];
+		$user->display_name = $this->data['display_name'];
+		$user->email = $this->data['email'];
+		$user->password = $this->data['password'];
+		
+		$save_user = Users::save_user($user);
+		
+		if($save_user === true) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => "User saved"
+				));			
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => $save_user
+				));
+		}
+		
+	}
+	
+	public function validate_login()
+	{
+		$user = new \stdClass();
+		$user->username = $this->data['username'];
+		$user->password = $this->data['password'];
 
+		
+		
+		$validate_login = Users::validate_login($this->data['username'], $this->data['password']);
+		
+		if($validate_login) {
+			$user = Users::get_user_by_username($this->data['username']);
+			Users::update_last_login($user->user_id);
+			
+			\Phile\Session::set('PhileAdmin_logged', $user);
+			
+			$this->send_json(array(
+				'status' => true,
+				'message' => "Logged as " . $this->data['username']
+			));
+				
+		} else {
+			\Phile\Session::set('PhileAdmin_logged', null);
+			
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Invalid login'
+			));
+		}
+	}
+	
+	public function save_settings()
+	{
+		$params = $this->data['settings'];
+		$settings = array();
+		parse_str(htmlspecialchars_decode($params), $settings);
+		$new_settings = $settings['safe_settings'];
+		
+		// new fields added dynamically
+		if(isset($settings['safe_settingsXkey'])){
+			foreach($settings['safe_settingsXkey'] as $key=>$value){
+				if(!empty($value)) {
+					$new_settings[$value] = $settings['safe_settingsXvalue'][$key];
+				}
+			}
+		}
+		
+		$new_settings['required_fields'] = array();
+		foreach($settings['required_fields'] as $key=>$value){
+			$new_settings['required_fields'][] = array('name' => $key, 'default' => $value);
+		}
+		
+		// new fields added dynamically
+		if(isset($settings['required_fieldsXkey'])){
+			foreach($settings['required_fieldsXkey'] as $key=>$value){
+				if(!empty($value)) {
+					$new_settings['required_fields'][] = array('name' => $value, 'default' => $settings['required_fieldsXvalue'][$key]);
+				}
+			}
+		}
+		
+		$saved = file_put_contents(str_ireplace(DIRECTORY_SEPARATOR . 'Classes', '', __DIR__) . DIRECTORY_SEPARATOR . 'config.json', json_encode($new_settings));
+		
+		if($saved !== false) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Settings saved'
+				));			
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error saving settings'
+				));
+		}
+		
+	}
+	
+	public function save_config()
+	{
+		$params = $this->data['config'];
+		$config = array();
+		parse_str(htmlspecialchars_decode($params), $config);
+		$new_config = $config['config'];
+		
+		// new fields added dynamically
+		if(isset($config['configXkey'])){
+			foreach($config['configXkey'] as $key=>$value){
+				if(!empty($value)) {
+					$new_config[$value] = $config['configXvalue'][$key];
+				}
+			}
+		}
+		
+		$saved = file_put_contents('config.json', json_encode($new_config));
+		
+		if($saved !== false) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Config saved'
+				));			
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error saving config'
+				));
+		}
+		
+	}
+	
 }

@@ -2,7 +2,8 @@
 /**
  * config file
  */
-return array(
+ 
+$config = array(
   'info' => array(
     'author' => array(
       'name' => 'James Doyle',
@@ -12,14 +13,21 @@ return array(
     'url' => 'http://github.com/james2doyle/phileAdmin',
     'version' => '1.0.0'
     ),
-  'users' => array(
-    array(
-      'username' => 'james2doyle',
-      'display_name' => 'James Doyle',
-      'role' => 'Admin',
-      'created' => '2014-05-22',
-      'logged_in' => date('Y-m-d'),
-      ),
+  'default_user' => array(
+      'username' => 'admin',
+      'display_name' => 'Phile Admin',
+	  'password' => '' // empty means that encryptionKey will be used as a password
+    ),
+   'admin_url' => '/admin', // must have a leading slash  
+  'unsafe_settings' => array(
+    'active',
+    'admin_url',
+    'default_content'
+    ),
+  'unsafe_config' => array(
+    'encryptionKey',
+    'timezone',
+    'base_url'
     ),
   'origin' => '../plugins/phile/adminPanel/views',
   'homepage' => 'http://localhost:8888/PhileCMS',
@@ -52,19 +60,12 @@ return array(
     array(
       'name' => 'status',
       'default' => 'draft'
-      )
-    ),
-  'default_content' => "## New Page Title\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  'unsafe_settings' => array(
-    'active',
-    'admin_url',
-    'default_content'
-    ),
-  'unsafe_config' => array(
-    'encryptionKey',
-    'timezone',
-    'base_url'
-    ),
+      ),
+	array(
+	  'name' => 'default_content'
+	  'default' => "## New Page Title\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	)
+  ),
   'nav' => array(
     array(
       'name' => 'pages',
@@ -116,3 +117,11 @@ return array(
       ),
     )
   );
+  
+  if(file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'config.json')) {
+	$config = array_merge($config, json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'config.json'), true));
+  }
+  
+  return $config;
+    
+	

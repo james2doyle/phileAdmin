@@ -1,3 +1,9 @@
+<?php
+	header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+	header('Pragma: no-cache');
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js ie7 lt-ie8"><![endif]-->
@@ -17,8 +23,20 @@
 	<div class="container">
 		<header class="user-banner">
 			<a href="<?php echo $homepage ?>" target="_blank"><strong><?php echo $portal_name ?></strong></a>
-			<a href="#"><strong>James Doyle</strong></a>
+			<?php if(\Phile\Session::get('PhileAdmin_logged') != null) { ?>
+			
+				<div class="login-info">
+					<a href="edit_user?id=<?php echo \Phile\Session::get('PhileAdmin_logged')->user_id; ?>">
+						<strong><?php echo \Phile\Session::get('PhileAdmin_logged')->display_name; ?></strong>
+					</a>
+					<a href="login" class="btn blue small hint--left" data-hint="Logout">
+						<span class="oi" data-glyph="account-logout"></span>
+					</a>
+				</div>
+			<?php } ?>
 		</header>
+	
+	<?php if(\Phile\Session::get('PhileAdmin_logged') != null) { ?>
 		<nav class="main-nav">
 			<?php foreach ($nav as $item): ?>
 				<a href="<?php echo $item->url ?>" <?php if($body_class === $item->name) { echo 'class="active"'; } ?>>
@@ -28,3 +46,5 @@
 				</a>
 			<?php endforeach ?>
 		</nav>
+	<?php } ?>
+	
