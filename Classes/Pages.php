@@ -42,7 +42,7 @@ class Pages {
 		\Phile\Session::set('PhileAdmin_logged', null);
 		Utilities::render('login.php', array_merge(array('title' => 'Login', 'body_class' => 'templates'), $this->settings));
 	}
-	
+
 	public function pages()
 	{
 		$data = array_merge(array(
@@ -53,7 +53,7 @@ class Pages {
 		Utilities::render('pages.php', $data);
 	}
 
-	public function fourofour() 
+	public function fourofour()
 	{
 		$data = array_merge(array(
 			'title' => '404',
@@ -108,13 +108,13 @@ class Pages {
 	public function photos()
 	{
 		$photos = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/images', '/^.*\.('. $this->settings['image_types'] .')$/');
-		
+
 		$image_obj = array();
 		// new objects for each image
 		foreach ($photos as $key => $value) {
 			$image_obj[$key] = Utilities::photo_info($value, $this->config['base_url']);
 		}
-			
+
 		if(count($image_obj) > 0) {
 			$data = array_merge(array(
 				'title' => 'Photos',
@@ -128,16 +128,16 @@ class Pages {
 				'photos' => false
 				), $this->settings);
 		}
-		
+
 		Utilities::render('photos.php', $data);
 	}
 
 	public function files()
 	{
 		$files = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/files');
-		
+
 		$file_obj = array();
-		
+
 		// new objects for each file
 		foreach ($files as $key => $value) {
 			// ignore dotfiles
@@ -145,7 +145,7 @@ class Pages {
 				$file_obj[$key] = Utilities::file_info($value, $this->config['base_url']);
 			}
 		}
-		
+
 		if(count($file_obj) > 0) {
 			$data = array_merge(array(
 				'title' => 'Files',
@@ -159,7 +159,7 @@ class Pages {
 				'files' => false
 				), $this->settings);
 		}
-		
+
 		Utilities::render('files.php', $data);
 	}
 
@@ -219,7 +219,7 @@ class Pages {
 	{
 		$safe_settings = array();
 		// lets generate a config that is safe for the frontend to edit and display
-		
+
 		foreach ($this->settings as $key => $value) {
 			// skip arrays and objects since we cant handle them as key => value
 			// skip items in the unsafe array
@@ -317,9 +317,9 @@ class Pages {
 			exit;
 		}
 	}
-	
+
 	/* USERS INTERFACES */
-	
+
 	public function users()
 	{
 		// get information about each user...
@@ -331,7 +331,7 @@ class Pages {
 			), $this->settings);
 		Utilities::render('users.php', $data);
 	}
-	
+
 	public function create_user()
 	{
 		$data = array_merge(array(
@@ -346,21 +346,21 @@ class Pages {
 			'title' => 'Create User',
 			'body_class' => 'users',
 		), $this->settings);
-		
+
 		Utilities::render('users-editor.php', $data);
 	}
-	
+
 	public function edit_user()
 	{
 		$get = Utilities::filter($_GET);
-		
+
 		$user = Users::get_user_by_hash($get['id']);
-		
+
 		// user not found
 		if($user === false) {
 			header("location: users"); exit;
 		}
-		
+
 		$data = array_merge(array(
 			'user' => array(
 				'id' => $user->user_id,
@@ -372,8 +372,8 @@ class Pages {
 			'title' => 'Edit User',
 			'body_class' => 'users',
 		), $this->settings);
-		
-		Utilities::render('users-editor.php', $data);		
+
+		Utilities::render('users-editor.php', $data);
 	}
 
 }

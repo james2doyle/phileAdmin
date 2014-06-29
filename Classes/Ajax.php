@@ -32,6 +32,9 @@ class Ajax {
 	private function send_json($response = null) {
 		header_remove();
 		$status = ($response['status']) ? ' 200 OK': ' 500 Internal Server Error';
+		if ($response['status'] === false) {
+			Utilities::error_log($response['message']);
+		}
 		header('Cache-Control: no-cache, must-revalidate');
 		header("Content-Type: application/json; charset=UTF-8");
 		header($_SERVER['SERVER_PROTOCOL'].$status, true);
