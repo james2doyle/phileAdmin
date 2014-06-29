@@ -12584,6 +12584,7 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 
 /*! vex.js, vex.dialog.js 2.1.1 */
 (function(){var a;a=function(a){var b,c;return b=!1,a(function(){var d;return d=(document.body||document.documentElement).style,b=void 0!==d.animation||void 0!==d.WebkitAnimation||void 0!==d.MozAnimation||void 0!==d.MsAnimation||void 0!==d.OAnimation,a(window).bind("keyup.vex",function(a){return 27===a.keyCode?c.closeByEscape():void 0})}),c={globalID:1,animationEndEvent:"animationend webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend",baseClassNames:{vex:"vex",content:"vex-content",overlay:"vex-overlay",close:"vex-close",closing:"vex-closing",open:"vex-open"},defaultOptions:{content:"",showCloseButton:!0,escapeButtonCloses:!0,overlayClosesOnClick:!0,appendLocation:"body",className:"",css:{},overlayClassName:"",overlayCSS:{},contentClassName:"",contentCSS:{},closeClassName:"",closeCSS:{}},open:function(b){return b=a.extend({},c.defaultOptions,b),b.id=c.globalID,c.globalID+=1,b.$vex=a("<div>").addClass(c.baseClassNames.vex).addClass(b.className).css(b.css).data({vex:b}),b.$vexOverlay=a("<div>").addClass(c.baseClassNames.overlay).addClass(b.overlayClassName).css(b.overlayCSS).data({vex:b}),b.overlayClosesOnClick&&b.$vexOverlay.bind("click.vex",function(b){return b.target===this?c.close(a(this).data().vex.id):void 0}),b.$vex.append(b.$vexOverlay),b.$vexContent=a("<div>").addClass(c.baseClassNames.content).addClass(b.contentClassName).css(b.contentCSS).append(b.content).data({vex:b}),b.$vex.append(b.$vexContent),b.showCloseButton&&(b.$closeButton=a("<div>").addClass(c.baseClassNames.close).addClass(b.closeClassName).css(b.closeCSS).data({vex:b}).bind("click.vex",function(){return c.close(a(this).data().vex.id)}),b.$vexContent.append(b.$closeButton)),a(b.appendLocation).append(b.$vex),c.setupBodyClassName(b.$vex),b.afterOpen&&b.afterOpen(b.$vexContent,b),setTimeout(function(){return b.$vexContent.trigger("vexOpen",b)},0),b.$vexContent},getAllVexes:function(){return a("."+c.baseClassNames.vex+':not(".'+c.baseClassNames.closing+'") .'+c.baseClassNames.content)},getVexByID:function(b){return c.getAllVexes().filter(function(){return a(this).data().vex.id===b})},close:function(a){var b;if(!a){if(b=c.getAllVexes().last(),!b.length)return!1;a=b.data().vex.id}return c.closeByID(a)},closeAll:function(){var b;return b=c.getAllVexes().map(function(){return a(this).data().vex.id}).toArray(),(null!=b?b.length:void 0)?(a.each(b.reverse(),function(a,b){return c.closeByID(b)}),!0):!1},closeByID:function(d){var e,f,g,h,i;return f=c.getVexByID(d),f.length?(e=f.data().vex.$vex,i=a.extend({},f.data().vex),g=function(){return i.beforeClose?i.beforeClose(f,i):void 0},h=function(){return f.trigger("vexClose",i),e.remove(),a("body").trigger("vexAfterClose",i),i.afterClose?i.afterClose(f,i):void 0},b?(g(),e.unbind(c.animationEndEvent).bind(c.animationEndEvent,function(){return h()}).addClass(c.baseClassNames.closing)):(g(),h()),!0):void 0},closeByEscape:function(){var b,d,e;return e=c.getAllVexes().map(function(){return a(this).data().vex.id}).toArray(),(null!=e?e.length:void 0)?(d=Math.max.apply(Math,e),b=c.getVexByID(d),b.data().vex.escapeButtonCloses!==!0?!1:c.closeByID(d)):!1},setupBodyClassName:function(){return a("body").bind("vexOpen.vex",function(){return a("body").addClass(c.baseClassNames.open)}).bind("vexAfterClose.vex",function(){return c.getAllVexes().length?void 0:a("body").removeClass(c.baseClassNames.open)})},hideLoading:function(){return a(".vex-loading-spinner").remove()},showLoading:function(){return c.hideLoading(),a("body").append('<div class="vex-loading-spinner '+c.defaultOptions.className+'"></div>')}}},"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a(require("jquery")):window.vex=a(jQuery)}).call(this),function(){var a;a=function(a,b){var c,d;return null==b?a.error("Vex is required to use vex.dialog"):(c=function(b){var c;return c={},a.each(b.serializeArray(),function(){return c[this.name]?(c[this.name].push||(c[this.name]=[c[this.name]]),c[this.name].push(this.value||"")):c[this.name]=this.value||""}),c},d={},d.buttons={YES:{text:"OK",type:"submit",className:"vex-dialog-button-primary"},NO:{text:"Cancel",type:"button",className:"vex-dialog-button-secondary",click:function(a){return a.data().vex.value=!1,b.close(a.data().vex.id)}}},d.defaultOptions={callback:function(){},afterOpen:function(){},message:"Message",input:'<input name="vex" type="hidden" value="_vex-empty-value" />',value:!1,buttons:[d.buttons.YES,d.buttons.NO],showCloseButton:!1,onSubmit:function(e){var f,g;return f=a(this),g=f.parent(),e.preventDefault(),e.stopPropagation(),g.data().vex.value=d.getFormValueOnSubmit(c(f)),b.close(g.data().vex.id)},focusFirstInput:!0},d.defaultAlertOptions={message:"Alert",buttons:[d.buttons.YES]},d.defaultConfirmOptions={message:"Confirm"},d.open=function(c){var e;return c=a.extend({},b.defaultOptions,d.defaultOptions,c),c.content=d.buildDialogForm(c),c.beforeClose=function(a){return c.callback(a.data().vex.value)},e=b.open(c),c.focusFirstInput&&e.find('input[type="submit"], textarea, input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"]').first().focus(),e},d.alert=function(b){return"string"==typeof b&&(b={message:b}),b=a.extend({},d.defaultAlertOptions,b),d.open(b)},d.confirm=function(b){return"string"==typeof b?a.error("dialog.confirm(options) requires options.callback."):(b=a.extend({},d.defaultConfirmOptions,b),d.open(b))},d.prompt=function(b){var c;return"string"==typeof b?a.error("dialog.prompt(options) requires options.callback."):(c={message:'<label for="vex">'+(b.label||"Prompt:")+"</label>",input:'<input name="vex" type="text" class="vex-dialog-prompt-input" placeholder="'+(b.placeholder||"")+'"  value="'+(b.value||"")+'" />'},b=a.extend({},c,b),d.open(b))},d.buildDialogForm=function(b){var c,e,f;return c=a('<form class="vex-dialog-form" />'),f=a('<div class="vex-dialog-message" />'),e=a('<div class="vex-dialog-input" />'),c.append(f.append(b.message)).append(e.append(b.input)).append(d.buttonsToDOM(b.buttons)).bind("submit.vex",b.onSubmit),c},d.getFormValueOnSubmit=function(a){return a.vex||""===a.vex?"_vex-empty-value"===a.vex?!0:a.vex:a},d.buttonsToDOM=function(c){var d;return d=a('<div class="vex-dialog-buttons" />'),a.each(c,function(e,f){return d.append(a('<input type="'+f.type+'" />').val(f.text).addClass(f.className+" vex-dialog-button "+(0===e?"vex-first ":"")+(e===c.length-1?"vex-last ":"")).bind("click.vex",function(c){return f.click?f.click(a(this).parents("."+b.baseClassNames.content),c):void 0}))}),d},d)},"function"==typeof define&&define.amd?define(["jquery","vex"],a):"object"==typeof exports?module.exports=a(require("jquery"),require("vex")):window.vex.dialog=a(window.jQuery,window.vex)}.call(this);
+// dropzone for Photos and Files pages
 Dropzone.options.mediaUpload = {
 	init: function() {
 		this.on('success', function(file, res) {
@@ -12599,6 +12600,7 @@ Dropzone.options.mediaUpload = {
 };
 $(document).ready(function() {
 	$.fx.speeds._default = 200;
+	var TIMEOUT_LENGTH = 1500;
 	$('.toggle-controls').on('click', 'a', function(event) {
 		event.preventDefault();
 		$(this).siblings('a.active').removeClass('active');
@@ -12680,9 +12682,6 @@ $(document).ready(function() {
 	$('#delete-selected').on('click', function() {
 		deleteItems($('.item-list').find('tbody').find('tr'));
 	});
-	$('.delete-setting').on('click', function() {
-		$(this).parent().parent().remove();
-	});	
 	$('.content').on('click', '.photo-item', function() {
 		var $input = $(this).find('input');
 		// simple toggle of the checked attr
@@ -12717,13 +12716,11 @@ $(document).ready(function() {
 		vex.dialog.alert('<p class="center"><img src="' + url + '" /></p>');
 		return false;
 	});
-	var counterSettings = 0;
-	$('.add-setting').on('click', function(event) {
+	$('#add-setting').on('click', function(event) {
 		event.preventDefault();
-		counterSettings++;
-		var template = '<tr><td align="center" class="actions"><a class="btn red small hint--right delete-setting" data-hint="Delete Key"><span class="oi" data-glyph="delete"></span></a></td><td><input type="text" name="'+$(this).attr('data-url')+'key['+counterSettings+']" value="" placeholder="New Key Name" class="input-100"></td><td><input type="text" name="'+$(this).attr('data-url')+'value['+counterSettings+']" value="" placeholder="New Key Value" class="input-100"></td></tr>';
-		var tableID = '#'+$(this).attr('data-url');
-		$(tableID).find('tbody').append(template).find('tr').last().find('input')[1];
+		var template = '<tr id="key"><td align="center"><input type="checkbox" class="row-select" value="key"></td><td><input type="text" name="" value="Key For New Setting" placeholder="Key For New Setting" class="input-100"></td><td><input type="text" name="" value="Value For New Setting" placeholder="Value For New Setting" class="input-100"></td></tr>';
+		var key = $('.item-list').find('tbody').append(template).find('tr').last().find('input')[1];
+		key.setSelectionRange(0, key.value.length);
 		return false;
 	});
 	$('#file-info').on('click', function(event) {
@@ -12787,13 +12784,13 @@ $(document).ready(function() {
 			vex.dialog.alert('<p>File Saved Succcessfully</p>');
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('<p>Error Saving File</p>');
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
@@ -12819,19 +12816,20 @@ $(document).ready(function() {
 					setTimeout(function() {
 						vex.close();
 						window.location.href = 'edit?url='+res.path+'&type=' + pageType;
-					}, 1500);
+					}, TIMEOUT_LENGTH);
 				}, function(err) {
 					console.log(err);
 					vex.dialog.alert('<p>Error saving file</p>');
 					setTimeout(function() {
 						vex.close();
-					}, 1500);
+					}, TIMEOUT_LENGTH);
 				});
 			}
 		});
 		return false;
 	});
-	
+
+
 	$('#login').on('click', function(event) {
 		event.preventDefault();
 		$.post('validate_login', {
@@ -12843,59 +12841,17 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.location.href = '';
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
-	
-	$('.save-settings').on('click', function(event) {
-		event.preventDefault();
-		$.post('save_settings', {
-			settings : $("#form_settings").serialize()
-		}).then(function(res) {
-			console.log(res);
-			vex.dialog.alert(res.message);
-			setTimeout(function() {
-				vex.close();
-				window.location.href = 'settings';
-			}, 1500);
-		}, function(err) {
-			console.log(err);
-			vex.dialog.alert('Error saving settings');
-			setTimeout(function() {
-				vex.close();
-			}, 1500);
-		});
-		return false;
-	});
-	
-	$('.save-config').on('click', function(event) {
-		event.preventDefault();
-		$.post('save_config', {
-			config : $("#form_config").serialize()
-		}).then(function(res) {
-			console.log(res);
-			vex.dialog.alert(res.message);
-			setTimeout(function() {
-				vex.close();
-				window.location.href = 'config';
-			}, 1500);
-		}, function(err) {
-			console.log(err);
-			vex.dialog.alert('Error saving config');
-			setTimeout(function() {
-				vex.close();
-			}, 1500);
-		});
-		return false;
-	});
-	
+
 	$('#save-user').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_user', {
@@ -12910,20 +12866,21 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.location.href = 'users';
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
-	
+
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});
+
 	$('#delete-file').on('click', function(event) {
 		event.preventDefault();
 		$.post('delete', {
@@ -12939,13 +12896,13 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.history.back();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('<p>Error Deleting File</p>');
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});

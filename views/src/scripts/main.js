@@ -1,3 +1,4 @@
+// dropzone for Photos and Files pages
 Dropzone.options.mediaUpload = {
 	init: function() {
 		this.on('success', function(file, res) {
@@ -13,6 +14,7 @@ Dropzone.options.mediaUpload = {
 };
 $(document).ready(function() {
 	$.fx.speeds._default = 200;
+	var TIMEOUT_LENGTH = 1500;
 	$('.toggle-controls').on('click', 'a', function(event) {
 		event.preventDefault();
 		$(this).siblings('a.active').removeClass('active');
@@ -196,13 +198,13 @@ $(document).ready(function() {
 			vex.dialog.alert('<p>File Saved Succcessfully</p>');
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('<p>Error Saving File</p>');
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
@@ -228,20 +230,20 @@ $(document).ready(function() {
 					setTimeout(function() {
 						vex.close();
 						window.location.href = 'edit?url='+res.path+'&type=' + pageType;
-					}, 1500);
+					}, TIMEOUT_LENGTH);
 				}, function(err) {
 					console.log(err);
 					vex.dialog.alert('<p>Error saving file</p>');
 					setTimeout(function() {
 						vex.close();
-					}, 1500);
+					}, TIMEOUT_LENGTH);
 				});
 			}
 		});
 		return false;
 	});
-	
-	
+
+
 	$('#login').on('click', function(event) {
 		event.preventDefault();
 		$.post('validate_login', {
@@ -253,17 +255,17 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.location.href = '';
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
-	
+
 	$('#save-user').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_user', {
@@ -278,21 +280,21 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.location.href = 'users';
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
-	
+
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});
-	
+
 	$('#delete-file').on('click', function(event) {
 		event.preventDefault();
 		$.post('delete', {
@@ -308,13 +310,13 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.history.back();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('<p>Error Deleting File</p>');
 			setTimeout(function() {
 				vex.close();
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		});
 		return false;
 	});
