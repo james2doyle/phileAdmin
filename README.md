@@ -30,12 +30,22 @@ The users data is fake.I am no security expert but maybe there is a good way to 
 ### Udate your config.php
 
 ```php
-// merge config with json if PhileAdmin is installed
-if($config['plugins']['phile\\adminPanel']['active'] && file_exists('config.json')) {
-    $config = array_merge(
-        $config,
-        json_decode(file_get_contents('config.json'), true)
-    );
+// are we using the adminPanel plugin?
+if($config['plugins']['phile\\adminPanel']['active']) {
+    // merge config with json if PhileAdmin is installed
+	if (file_exists('config.json')) {
+		$config = array_merge(
+			$config,
+			json_decode(file_get_contents('config.json'), true)
+		);
+	}
+	// merge plugins with json if PhileAdmin is installed
+	if(file_exists('config_plugins.json')) {
+		$config['plugins'] = array_merge(
+			$config['plugins'],
+			json_decode(file_get_contents('config_plugins.json'), true)
+		);
+	}
 }
 
 return $config;
