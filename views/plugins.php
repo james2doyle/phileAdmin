@@ -11,9 +11,9 @@
 		  <table class="item-list">
 			<colgroup>
 			<col span="1" style="width: 5%;">
-			<col span="1" style="width: 35%;">
+			<col span="1" style="width: 30%;">
+			<col span="1" style="width: 25%;">
 			<col span="1" style="width: 15%;">
-			<col span="1" style="width: 20%;">
 			<col span="1" style="width: 10%;">
 			<col span="1" style="width: 10%;">
 			<col span="1" style="width: 5%;">
@@ -33,7 +33,7 @@
 		  <?php foreach ($plugins_list as $plugin): ?>
 			<tr id="<?php echo $plugin->slug ?>">
 			  <td align="center" class="actions">
-				<?php if(in_array($plugin->name, $unsafe_plugins)) { ?>
+				<?php if(in_array($plugin->id, $unsafe_plugins)) { ?>
 						<a class="btn gray small hint--right" data-hint="Delete Plugin (protected)" data-url="<?php echo $plugin->name; ?>"><span class="oi" data-glyph="delete"></span></a>
 				<?php } else { ?>
 						<a class="btn red small hint--right delete-plugin" data-hint="Delete Plugin" data-url="<?php echo $plugin->name; ?>"><span class="oi" data-glyph="delete"></span></a>
@@ -44,7 +44,7 @@
 			  <td><?php if ($plugin->author): ?><a href="<?php echo $plugin->author['homepage'] ?>" target="_blank"><?php echo $plugin->author['name'] ?></a><?php else: ?>Undefined<?php endif ?></td>
 			  <td align="right"><?php echo ($plugin->version) ? $plugin->version: 'Undefined'; ?></td>
 			  <td align="right">
-			  <?php if(in_array($plugin->name, $unsafe_plugins)) { ?>
+			  <?php if(in_array($plugin->id, $unsafe_plugins)) { ?>
 				<span class="green"><strong>Enabled</strong></span>
 				<input type="hidden" name="plugin_active[<?php echo $plugin->id ?>]" value="1" />
 			  <?php } else { ?>
