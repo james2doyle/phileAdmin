@@ -127,13 +127,6 @@ $(document).ready(function() {
 		vex.dialog.alert('<p class="center"><img src="' + url + '" /></p>');
 		return false;
 	});
-	$('#add-setting').on('click', function(event) {
-		event.preventDefault();
-		var template = '<tr id="key"><td align="center"><input type="checkbox" class="row-select" value="key"></td><td><input type="text" name="" value="Key For New Setting" placeholder="Key For New Setting" class="input-100"></td><td><input type="text" name="" value="Value For New Setting" placeholder="Value For New Setting" class="input-100"></td></tr>';
-		var key = $('.item-list').find('tbody').append(template).find('tr').last().find('input')[1];
-		key.setSelectionRange(0, key.value.length);
-		return false;
-	});
 	$('#file-info').on('click', function(event) {
 		event.preventDefault();
 		$('.photo-list').find('.selected').each(function(index, el) {
@@ -260,6 +253,18 @@ $(document).ready(function() {
 			}, TIMEOUT_LENGTH);
 		});
 		return false;
+	});
+	var counterSettings = 0;
+	$('.add-setting').on('click', function(event) {
+		event.preventDefault();
+		counterSettings++;
+		var template = '<tr><td align="center" class="actions"><a class="btn red small hint--right delete-setting" data-hint="Delete Key"><span class="oi" data-glyph="delete"></span></a></td><td><input type="text" name="'+$(this).attr('data-url')+'key['+counterSettings+']" value="" placeholder="New Key Name" class="input-100"></td><td><input type="text" name="'+$(this).attr('data-url')+'value['+counterSettings+']" value="" placeholder="New Key Value" class="input-100"></td></tr>';
+		var tableID = '#'+$(this).attr('data-url');
+		$(tableID).find('tbody').append(template).find('tr').last().find('input')[1];
+		return false;
+	});
+	$('.delete-setting').on('click', function() {
+		$(this).parent().parent().remove();
 	});
 	$('.save-settings').on('click', function(event) {
 		event.preventDefault();
