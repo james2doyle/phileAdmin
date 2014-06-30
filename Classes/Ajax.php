@@ -368,4 +368,51 @@ class Ajax {
 				));
 		}
 	}
+	
+	public function delete_plugin()
+	{
+		$plugin_path = PLUGINS_DIR . $this->data['slug'];
+		$deleted = false;
+		if(file_exists($plugin_path) && $plugin_path != PLUGINS_DIR && str_replace(DIRECTORY_SEPARATOR, '', $plugin_path) != ''){
+			$deleted = Utilities::delTree($plugin_path);
+		}
+		
+		if($deleted) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Plugin deleted'
+				));
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error deletinf plugin'
+				));
+		}
+	}
+	
+	public function save_plugins()
+	{
+		$plugins = $this->data['plugins'];
+		$plugins_config = array();
+		$new_plugins_config = array();
+		
+		parse_str(htmlspecialchars_decode($plugins), $plugins_config);
+		
+		foreach($plugins_config['plugin_active'] as $key=>$value) {
+			$new_plugins_config[$key] = array('active' => $value);
+		}
+		
+		$saved = file_put_contents('config_plugins.json', str_replace(array('"1"', '"0"'), array('true', 'false'), json_encode($new_plugins_config)));
+		if($saved !== false) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Plugins config saved'
+				));
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error saving plugins config'
+				));
+		}
+	}
 }

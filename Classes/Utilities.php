@@ -236,6 +236,14 @@ class Utilities {
 
 		return hex2bin(gzuncompress($hash));
 	}
+	
+	public static function delTree($dir) {
+		$files = array_diff(scandir($dir), array('.','..'));
+		foreach ($files as $file) {
+			(is_dir("$dir/$file")) ? Utilities::delTree("$dir/$file") : unlink("$dir/$file");
+		}
+		return rmdir($dir);
+  } 
 
 	public static function error_log($message) {
 		$error_file = realpath(dirname(dirname(__FILE__)))."/error_log";

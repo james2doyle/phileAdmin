@@ -2607,6 +2607,9 @@ a.btn, button[type="button"].btn, input[type="submit"].btn {
   .item-list .actions a {
     cursor: pointer; }
 
+.plugin_active {
+  font-weight: 700;
+}
 .plugins .item-list td, .plugins .item-list th {
   vertical-align: top; }
   .plugins .item-list td[align="center"], .plugins .item-list th[align="center"] {

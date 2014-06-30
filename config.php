@@ -29,6 +29,16 @@ $config = array(
     'timezone',
     'base_url'
     ),
+  'unsafe_plugins' => array(
+    'phile\adminPanel',
+    'phile\contentVariables',
+	'phile\errorHandler',
+	'phile\parserMarkdown',
+	'phile\parserMeta',
+	'phile\simpleFileDataPersistence',
+	'phile\templateTwig',
+	'phile\twigFilters',
+    ),
   'origin' => '../plugins/phile/adminPanel/views',
   'homepage' => 'http://localhost:8888/PhileCMS',
   'portal_name' => 'PhileCMS Admin',
