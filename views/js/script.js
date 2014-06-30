@@ -12770,7 +12770,6 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-
 	$('#upload-files').on('click', function(event) {
 		event.preventDefault();
 		$('#media-upload').trigger('click');
@@ -12831,7 +12830,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
 	$('#login').on('click', function(event) {
 		event.preventDefault();
 		$.post('validate_login', {
@@ -12853,7 +12851,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
 	$('.save-settings').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_settings', {
@@ -12863,7 +12860,7 @@ $(document).ready(function() {
 			vex.dialog.alert(res.message);
 			setTimeout(function() {
 				vex.close();
-				window.location.href = 'settings';
+				location.reload();
 			}, 1500);
 		}, function(err) {
 			console.log(err);
@@ -12874,7 +12871,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
 	$('.save-config').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_config', {
@@ -12884,7 +12880,7 @@ $(document).ready(function() {
 			vex.dialog.alert(res.message);
 			setTimeout(function() {
 				vex.close();
-				window.location.href = 'config';
+				location.reload();
 			}, 1500);
 		}, function(err) {
 			console.log(err);
@@ -12895,7 +12891,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
 	$('#save-user').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_user', {
@@ -12909,7 +12904,7 @@ $(document).ready(function() {
 			vex.dialog.alert(res.message);
 			setTimeout(function() {
 				vex.close();
-				window.location.href = 'users';
+				location.reload();
 			}, 1500);
 		}, function(err) {
 			console.log(err);
@@ -12920,7 +12915,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});
@@ -12949,7 +12943,59 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-
+	$(".plugin_active").change(function() {
+		$(this).removeClass();
+		$(this).addClass($(this).attr('name') + ' ' + $("option:selected", this).attr('class'));
+	});
+	$('.delete-plugin').on('click', function(event) {
+		event.preventDefault();
+		var plugin_slug = $(this).attr('data-url');
+		vex.dialog.confirm({
+			message: 'Are you absolutely sure you want to delete this plugin?',
+			callback: function(value) {
+				if (value) {
+					$.post('delete_plugin', {
+						slug : plugin_slug
+					}).then(function(res) {
+						console.log(res);
+						vex.dialog.alert(res.message);
+						$(this).parent().parent().remove();
+						setTimeout(function() {
+							vex.close();
+							location.reload();
+						}, 1500);
+					}, function(err) {
+						console.log(err);
+						vex.dialog.alert('Error deleting plugin');
+						setTimeout(function() {
+							vex.close();
+						}, 1500);
+					});
+				}
+			}
+		});
+		return false;
+	});
+	$('#save-plugins').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_plugins', {
+			plugins : $("#form_plugins").serialize()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				location.reload();
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving plugins config');
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
 	function loadPhotoColumns() {
 		if (store.get('photo-columns')) {
 			var val = store.get('photo-columns');

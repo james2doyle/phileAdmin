@@ -42,7 +42,7 @@ class Pages {
 		\Phile\Session::set('PhileAdmin_logged', null);
 		Utilities::render('login.php', array_merge(array('title' => 'Login', 'body_class' => 'templates'), $this->settings));
 	}
-	
+
 	public function pages()
 	{
 		$data = array_merge(array(
@@ -53,7 +53,7 @@ class Pages {
 		Utilities::render('pages.php', $data);
 	}
 
-	public function fourofour() 
+	public function fourofour()
 	{
 		$data = array_merge(array(
 			'title' => '404',
@@ -82,25 +82,37 @@ class Pages {
 	}
 
 	public function plugins()
-	{
-		$plugins = $this->config['plugins'];
+	{	
 		$plugin_obj = array();
-		// new objects for each plugin
-		foreach ($plugins as $key => $value) {
-			$plugin_obj[$key] = new \stdClass();
-			$plugin_obj[$key]->name = $key;
-			$plugin_obj[$key]->active = $value['active'];
-			$plugin_obj[$key]->slug = Utilities::slugify($key);
-			$plugin_obj[$key]->path = '/'.str_replace(ROOT_DIR, '', PLUGINS_DIR . $key);
+		$plugins = \Phile\Utility::getFiles(PLUGINS_DIR, '/^.*(config.php)$/');
+		$current_config = $this->config['plugins'];
+		
+		foreach($plugins as $plugin_path) {
+			// max path depth 2 levels
+			$plugin_name = str_replace(PLUGINS_DIR, '', $plugin_path);
+			if(substr_count($plugin_name, DIRECTORY_SEPARATOR) > 2) continue;
+			$plugin_name = str_replace(DIRECTORY_SEPARATOR . 'config.php', '', $plugin_name);
+			$pluginConfiguration = \Phile\Utility::load($plugin_path);
+			
+			// new objects for each plugin
+			$plugin_obj[$plugin_name] = new \stdClass();
+			$plugin_obj[$plugin_name]->id = str_replace(DIRECTORY_SEPARATOR, "\\", $plugin_name);
+			$plugin_obj[$plugin_name]->name = $plugin_name;
+			$plugin_obj[$plugin_name]->active = isset($current_config[$plugin_name]['active']) ? $current_config[$plugin_name]['active'] : false;
+			$plugin_obj[$plugin_name]->slug = Utilities::slugify($plugin_name);
+			$plugin_obj[$plugin_name]->path = DIRECTORY_SEPARATOR . str_replace(ROOT_DIR, '', PLUGINS_DIR . $plugin_name);
+			
 			foreach (array('author', 'namespace', 'url', 'version') as $item) {
 				$new_key = strtolower($item);
-				$plugin_obj[$key]->{$new_key} = isset($value['settings']['info'][$item]) ? $value['settings']['info'][$item]: null;
+				$plugin_obj[$plugin_name]->{$new_key} = isset($pluginConfiguration['info'][$item]) ? $pluginConfiguration['info'][$item]: null;
 			}
 		}
+		
 		$data = array_merge(array(
 			'title' => 'Plugins',
 			'body_class' => 'plugins',
-			'plugins_list' => $plugin_obj
+			'plugins_list' => $plugin_obj,
+			'unsafe_plugins' => $this->config['plugins']['phile\adminPanel']['settings']['unsafe_plugins']
 			), $this->settings);
 		Utilities::render('plugins.php', $data);
 	}
@@ -108,13 +120,13 @@ class Pages {
 	public function photos()
 	{
 		$photos = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/images', '/^.*\.('. $this->settings['image_types'] .')$/');
-		
+
 		$image_obj = array();
 		// new objects for each image
 		foreach ($photos as $key => $value) {
 			$image_obj[$key] = Utilities::photo_info($value, $this->config['base_url']);
 		}
-			
+
 		if(count($image_obj) > 0) {
 			$data = array_merge(array(
 				'title' => 'Photos',
@@ -128,16 +140,16 @@ class Pages {
 				'photos' => false
 				), $this->settings);
 		}
-		
+
 		Utilities::render('photos.php', $data);
 	}
 
 	public function files()
 	{
 		$files = \Phile\Utility::getFiles(CONTENT_DIR . 'uploads/files');
-		
+
 		$file_obj = array();
-		
+
 		// new objects for each file
 		foreach ($files as $key => $value) {
 			// ignore dotfiles
@@ -145,7 +157,7 @@ class Pages {
 				$file_obj[$key] = Utilities::file_info($value, $this->config['base_url']);
 			}
 		}
-		
+
 		if(count($file_obj) > 0) {
 			$data = array_merge(array(
 				'title' => 'Files',
@@ -159,7 +171,7 @@ class Pages {
 				'files' => false
 				), $this->settings);
 		}
-		
+
 		Utilities::render('files.php', $data);
 	}
 
@@ -219,7 +231,7 @@ class Pages {
 	{
 		$safe_settings = array();
 		// lets generate a config that is safe for the frontend to edit and display
-		
+
 		foreach ($this->settings as $key => $value) {
 			// skip arrays and objects since we cant handle them as key => value
 			// skip items in the unsafe array
@@ -317,9 +329,9 @@ class Pages {
 			exit;
 		}
 	}
-	
+
 	/* USERS INTERFACES */
-	
+
 	public function users()
 	{
 		// get information about each user...
@@ -331,7 +343,7 @@ class Pages {
 			), $this->settings);
 		Utilities::render('users.php', $data);
 	}
-	
+
 	public function create_user()
 	{
 		$data = array_merge(array(
@@ -346,21 +358,21 @@ class Pages {
 			'title' => 'Create User',
 			'body_class' => 'users',
 		), $this->settings);
-		
+
 		Utilities::render('users-editor.php', $data);
 	}
-	
+
 	public function edit_user()
 	{
 		$get = Utilities::filter($_GET);
-		
+
 		$user = Users::get_user_by_hash($get['id']);
-		
+
 		// user not found
 		if($user === false) {
 			header("location: users"); exit;
 		}
-		
+
 		$data = array_merge(array(
 			'user' => array(
 				'id' => $user->user_id,
@@ -372,8 +384,8 @@ class Pages {
 			'title' => 'Edit User',
 			'body_class' => 'users',
 		), $this->settings);
-		
-		Utilities::render('users-editor.php', $data);		
+
+		Utilities::render('users-editor.php', $data);
 	}
 
 }

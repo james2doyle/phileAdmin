@@ -1,3 +1,4 @@
+// dropzone for Photos and Files pages
 Dropzone.options.mediaUpload = {
 	init: function() {
 		this.on('success', function(file, res) {
@@ -13,6 +14,7 @@ Dropzone.options.mediaUpload = {
 };
 $(document).ready(function() {
 	$.fx.speeds._default = 200;
+	var TIMEOUT_LENGTH = 1500;
 	$('.toggle-controls').on('click', 'a', function(event) {
 		event.preventDefault();
 		$(this).siblings('a.active').removeClass('active');
@@ -37,13 +39,11 @@ $(document).ready(function() {
 		// the final state of the button
 		$('#delete-selected').prop('disabled', !checked);
 	});
-
 	function deleteFile(url) {
 		return $.post('delete_file', {
 			value: url
 		});
 	}
-
 	function handleDelete(i, e, items, plugins) {
 		var $input = $(e).find('input');
 		if ($input.prop('checked')) {
@@ -72,7 +72,6 @@ $(document).ready(function() {
 			$(el).prop('checked', false);
 		});
 	}
-
 	function deleteItems($parent) {
 		var plugins = $('body').hasClass('plugins');
 		var count = $parent.find('input').filter(':checked').length;
@@ -179,7 +178,6 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-
 	$('#upload-files').on('click', function(event) {
 		event.preventDefault();
 		$('#media-upload').trigger('click');
@@ -240,8 +238,6 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
-	
 	$('#login').on('click', function(event) {
 		event.preventDefault();
 		$.post('validate_login', {
@@ -253,17 +249,56 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				window.location.href = '';
-			}, 1500);
+			}, TIMEOUT_LENGTH);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
+			setTimeout(function() {
+				vex.close();
+			}, TIMEOUT_LENGTH);
+		});
+		return false;
+	});
+	$('.save-settings').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_settings', {
+			settings : $("#form_settings").serialize()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				location.reload();
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving settings');
 			setTimeout(function() {
 				vex.close();
 			}, 1500);
 		});
 		return false;
 	});
-	
+	$('.save-config').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_config', {
+			config : $("#form_config").serialize()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				location.reload();
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving config');
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
 	$('#save-user').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_user', {
@@ -277,7 +312,7 @@ $(document).ready(function() {
 			vex.dialog.alert(res.message);
 			setTimeout(function() {
 				vex.close();
-				window.location.href = 'users';
+				location.reload();
 			}, 1500);
 		}, function(err) {
 			console.log(err);
@@ -288,11 +323,33 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
+	$('#save-user').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_user', {
+			user_id: $('#user_id').val(),
+			username: $('#user_username').val(),
+			display_name: $('#user_displayname').val(),
+			email: $('#user_email').val(),
+			password: $('#user_password').val()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				location.reload();
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});
-	
 	$('#delete-file').on('click', function(event) {
 		event.preventDefault();
 		$.post('delete', {
@@ -318,7 +375,59 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-
+	$(".plugin_active").change(function() {
+		$(this).removeClass();
+		$(this).addClass($(this).attr('name') + ' ' + $("option:selected", this).attr('class'));
+	});
+	$('.delete-plugin').on('click', function(event) {
+		event.preventDefault();
+		var plugin_slug = $(this).attr('data-url');
+		vex.dialog.confirm({
+			message: 'Are you absolutely sure you want to delete this plugin?',
+			callback: function(value) {
+				if (value) {
+					$.post('delete_plugin', {
+						slug : plugin_slug
+					}).then(function(res) {
+						console.log(res);
+						vex.dialog.alert(res.message);
+						$(this).parent().parent().remove();
+						setTimeout(function() {
+							vex.close();
+							location.reload();
+						}, 1500);
+					}, function(err) {
+						console.log(err);
+						vex.dialog.alert('Error deleting plugin');
+						setTimeout(function() {
+							vex.close();
+						}, 1500);
+					});
+				}
+			}
+		});
+		return false;
+	});
+	$('#save-plugins').on('click', function(event) {
+		event.preventDefault();
+		$.post('save_plugins', {
+			plugins : $("#form_plugins").serialize()
+		}).then(function(res) {
+			console.log(res);
+			vex.dialog.alert(res.message);
+			setTimeout(function() {
+				vex.close();
+				location.reload();
+			}, 1500);
+		}, function(err) {
+			console.log(err);
+			vex.dialog.alert('Error saving plugins config');
+			setTimeout(function() {
+				vex.close();
+			}, 1500);
+		});
+		return false;
+	});
 	function loadPhotoColumns() {
 		if (store.get('photo-columns')) {
 			var val = store.get('photo-columns');

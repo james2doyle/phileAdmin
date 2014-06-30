@@ -5,7 +5,7 @@ This is the new version of the [PhileCMS](https://github.com/PhileCMS/Phile) adm
 
 ## For Phile 0.9.*
 
-You can download the old release [here](https://github.com/james2doyle/phileAdmin/releases/tag/0.9).
+You can download the old release [here](https://github.com/james2doyle/phileAdmin/releases/tag/0.9). Please note, *I never finished the 0.9 version. It will not be supported anymore.*.
 
 ## For Phile 1.*
 
@@ -26,6 +26,24 @@ You also need add the plugin to your config:
 Just go to `/admin` on your phile install and you will see it load up! The session is not enabled while this plugin is in development.
 
 The users data is fake.I am no security expert but maybe there is a good way to do users with Phile without using plaintext passwords and logins. Maybe something with single sign-on style?
+
+### Udate your config.php
+
+```php
+// merge config with json if PhileAdmin is installed
+if($config['plugins']['phile\\adminPanel']['active'] && file_exists('config.json')) {
+    $config = array_merge(
+        $config,
+        json_decode(file_get_contents('config.json'), true)
+    );
+}
+
+return $config;
+```
+
+### Handling Errors
+
+Before you create any issues or write off this plugin as broken, please check the `error_log` file located in the adminPanel root.
 
 ## Features
 
@@ -64,12 +82,18 @@ Here is what is working so far:
 ### Config
 
 * list config
+* create and save key => values
+* delete items
 
 ### Users
 
-* list users (fake data)
+* list users
+* create and save
+* auto-create when no users are present
+* delete users
 
 ### Settings
 
 * list settings
 * list required fields for new pages
+* create, save and delete fields

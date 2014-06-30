@@ -32,6 +32,9 @@ class Ajax {
 	private function send_json($response = null) {
 		header_remove();
 		$status = ($response['status']) ? ' 200 OK': ' 500 Internal Server Error';
+		if ($response['status'] === false) {
+			Utilities::error_log($response['message']);
+		}
 		header('Cache-Control: no-cache, must-revalidate');
 		header("Content-Type: application/json; charset=UTF-8");
 		header($_SERVER['SERVER_PROTOCOL'].$status, true);
@@ -203,7 +206,7 @@ class Ajax {
 		$safe_filename = str_replace($path['filename'], Utilities::slugify($path['filename']), $this->data['path']);
 		// use raw textarea value
 		$write = file_put_contents($safe_filename, $_POST['value']);
-		
+
 		if($this->data['pageType'] == 'template') {
 			$received_filename = str_replace(ROOT_DIR, '', $this->data['path']);
 		} else {
@@ -213,7 +216,7 @@ class Ajax {
 				$received_filename = $path['filename'];
 			}
 		}
-		
+
 		if ($write) {
 			$this->send_json(array(
 				'status' => true,
@@ -245,9 +248,9 @@ class Ajax {
 				));
 		}
 	}
-	
+
 	/* USER FUNCTIONS */
-	
+
 	public function save_user()
 	{
 		$user = new \stdClass();
@@ -256,61 +259,50 @@ class Ajax {
 		$user->display_name = $this->data['display_name'];
 		$user->email = $this->data['email'];
 		$user->password = $this->data['password'];
-		
+
 		$save_user = Users::save_user($user);
-		
+
 		if($save_user === true) {
 			$this->send_json(array(
 				'status' => true,
 				'message' => "User saved"
-				));			
+				));
 		} else {
 			$this->send_json(array(
 				'status' => false,
 				'message' => $save_user
 				));
 		}
-		
 	}
-	
 	public function validate_login()
 	{
 		$user = new \stdClass();
 		$user->username = $this->data['username'];
 		$user->password = $this->data['password'];
-
-		
-		
 		$validate_login = Users::validate_login($this->data['username'], $this->data['password']);
-		
 		if($validate_login) {
 			$user = Users::get_user_by_username($this->data['username']);
 			Users::update_last_login($user->user_id);
-			
 			\Phile\Session::set('PhileAdmin_logged', $user);
-			
 			$this->send_json(array(
 				'status' => true,
 				'message' => "Logged as " . $this->data['username']
 			));
-				
 		} else {
 			\Phile\Session::set('PhileAdmin_logged', null);
-			
 			$this->send_json(array(
 				'status' => false,
 				'message' => 'Invalid login'
 			));
 		}
 	}
-	
+
 	public function save_settings()
 	{
 		$params = $this->data['settings'];
 		$settings = array();
 		parse_str(htmlspecialchars_decode($params), $settings);
 		$new_settings = $settings['safe_settings'];
-		
 		// new fields added dynamically
 		if(isset($settings['safe_settingsXkey'])){
 			foreach($settings['safe_settingsXkey'] as $key=>$value){
@@ -319,12 +311,11 @@ class Ajax {
 				}
 			}
 		}
-		
 		$new_settings['required_fields'] = array();
 		foreach($settings['required_fields'] as $key=>$value){
 			$new_settings['required_fields'][] = array('name' => $key, 'default' => $value);
 		}
-		
+
 		// new fields added dynamically
 		if(isset($settings['required_fieldsXkey'])){
 			foreach($settings['required_fieldsXkey'] as $key=>$value){
@@ -333,30 +324,29 @@ class Ajax {
 				}
 			}
 		}
-		
+
 		$saved = file_put_contents(str_ireplace(DIRECTORY_SEPARATOR . 'Classes', '', __DIR__) . DIRECTORY_SEPARATOR . 'config.json', json_encode($new_settings));
-		
+
 		if($saved !== false) {
 			$this->send_json(array(
 				'status' => true,
 				'message' => 'Settings saved'
-				));			
+				));
 		} else {
 			$this->send_json(array(
 				'status' => false,
 				'message' => 'Error saving settings'
 				));
 		}
-		
+
 	}
-	
+
 	public function save_config()
 	{
 		$params = $this->data['config'];
 		$config = array();
 		parse_str(htmlspecialchars_decode($params), $config);
 		$new_config = $config['config'];
-		
 		// new fields added dynamically
 		if(isset($config['configXkey'])){
 			foreach($config['configXkey'] as $key=>$value){
@@ -365,21 +355,64 @@ class Ajax {
 				}
 			}
 		}
-		
 		$saved = file_put_contents('config.json', json_encode($new_config));
-		
 		if($saved !== false) {
 			$this->send_json(array(
 				'status' => true,
 				'message' => 'Config saved'
-				));			
+				));
 		} else {
 			$this->send_json(array(
 				'status' => false,
 				'message' => 'Error saving config'
 				));
 		}
-		
 	}
 	
+	public function delete_plugin()
+	{
+		$plugin_path = PLUGINS_DIR . $this->data['slug'];
+		$deleted = false;
+		if(file_exists($plugin_path) && $plugin_path != PLUGINS_DIR && str_replace(DIRECTORY_SEPARATOR, '', $plugin_path) != ''){
+			$deleted = Utilities::delTree($plugin_path);
+		}
+		
+		if($deleted) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Plugin deleted'
+				));
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error deletinf plugin'
+				));
+		}
+	}
+	
+	public function save_plugins()
+	{
+		$plugins = $this->data['plugins'];
+		$plugins_config = array();
+		$new_plugins_config = array();
+		
+		parse_str(htmlspecialchars_decode($plugins), $plugins_config);
+		
+		foreach($plugins_config['plugin_active'] as $key=>$value) {
+			$new_plugins_config[$key] = array('active' => $value);
+		}
+		
+		$saved = file_put_contents('config_plugins.json', str_replace(array('"1"', '"0"'), array('true', 'false'), json_encode($new_plugins_config)));
+		if($saved !== false) {
+			$this->send_json(array(
+				'status' => true,
+				'message' => 'Plugins config saved'
+				));
+		} else {
+			$this->send_json(array(
+				'status' => false,
+				'message' => 'Error saving plugins config'
+				));
+		}
+	}
 }

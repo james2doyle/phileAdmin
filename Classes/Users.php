@@ -12,11 +12,11 @@ namespace Phile\Plugin\Phile\AdminPanel;
  * @package Phile\Plugin\Phile\AdminPanel\Users
  */
 class Users {
-	
+
 	public static function get_users_path() {
 		return dirname(__DIR__) . DIRECTORY_SEPARATOR . 'users' . DIRECTORY_SEPARATOR;
 	}
-	
+
 	/*!
 	 * count users
 	 * @return int
@@ -50,7 +50,7 @@ class Users {
 	public static function get_user_by_username($username) {
 		return Users::get_user_by_hash(Utilities::generateHash($username));
 	}
-	
+
 	/*!
 	 * get an user by its id/hash
 	 * @param  string $hash user_id
@@ -62,10 +62,11 @@ class Users {
 			$user_decoded = Utilities::decodeData(file_get_contents($userFile));
 			return(json_decode($user_decoded));
 		} else {
+			Utilities::error_log('No user file found for ' . $hash);
 			return false;
 		}
 	}
-	
+
 	/*!
 	 * validate login info
 	 * @param  string $username username
@@ -76,6 +77,7 @@ class Users {
 		$user_id = Utilities::generateHash($username);
 		$user_data = Users::get_user_by_hash($user_id);
 		if($user_data === false) {
+			Utilities::error_log('Could not find user ' . $user_id);
 			return false;
 		} else {
 			if($user_data->password == Utilities::generateHash($password)) {
@@ -84,7 +86,7 @@ class Users {
 		}
 		return false;
 	}
-	
+
 	/*!
 	 * update user with its last login time
 	 * @param  string $user_id user_id
@@ -95,14 +97,14 @@ class Users {
 		$user_data->logged = time();
 		return Users::save_user($user_data);
 	}
-	
+
 	/*!
 	 * create/update an user
 	 * @param  object $user object that contains user data
 	 * @return mixed true if user was saved/updated properly OR string that contains an error
 	 */
 	public static function save_user($user) {
-	
+
 		/* User data:
 			$user->user_id
 			$user->username
@@ -112,20 +114,20 @@ class Users {
 			$user->created
 			$user->logged
 		*/
-		
+
 		if(empty($user->display_name)) {
 			return 'Display Name must be filled out';
 		}
-		
+
 		if(empty($user->email)) {
 			return 'Email must be filled out';
 		} elseif(!filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
 			return 'Invalid email';
 		}
-		
+
 		// new user
 		if(!isset($user->user_id) || $user->user_id == '') {
-		
+
 			// password is required for new users
 			if(empty($user->password)) {
 				return 'Password must be filled out';
@@ -134,28 +136,30 @@ class Users {
 			if(empty($user->username)) {
 				return 'Username must be filled out';
 			}
-			
+
 			$user->username = strtolower($user->username);
 			$user->user_id  = Utilities::generateHash($user->username);
 			$user->password = Utilities::generateHash($user->password);
 			$user->created = time();
 			$user->logged  = time();
-			
+
 			// check if user already exists
 			if(Users::get_user_by_hash($user->user_id) !== false) {
+				Utilities::error_log('User already exists ' . $user->user_id);
 				return 'User already exists';
 			}
-			
+
 		} else {
 			// update user data
 			$old_user_data = Users::get_user_by_hash($user->user_id);
-			
+
 			if($old_user_data === false) {
+				Utilities::error_log('User wasn\'t found ' . $user->user_id);
 				return "User wasn't found";
 			}
-			
+
 			## keep data and check for data changes ##
-			
+
 			// update password
 			if(!empty($user->password) && $old_user_data->password != $user->password) {
 				$old_user_data->password = Utilities::generateHash($user->password);
@@ -171,17 +175,18 @@ class Users {
 			// update last login
 			if(!empty($user->logged)) {
 				$old_user_data->logged = $user->logged;
-			}			
-			
+			}
+
 			$user = $old_user_data;
-			
+
 		}
-		
+
 		$encoded_user = Utilities::encodeData(json_encode($user));
-		
+
 		if ( Utilities::file_force_contents(Users::get_users_path() . $user->user_id . '.json', $encoded_user) ){
 			return true;
 		} else {
+			Utilities::error_log('Error while saving user file ' . $user->user_id);
 			return 'Error while saving user file';
 		}
 	}

@@ -127,12 +127,12 @@ class Utilities {
 		$parts = explode(DIRECTORY_SEPARATOR, $dir);
 		$file = array_pop($parts);
 		$dir = implode(DIRECTORY_SEPARATOR, $parts);
-		
+
 		if (!is_dir($dir)) {
 			// creates each directory recursively (using default chmod)
 			mkdir($dir, 0777, TRUE);
 		}
-		
+
 		return file_put_contents($dir . DIRECTORY_SEPARATOR . $file, $contents);
 	}
 
@@ -189,18 +189,18 @@ class Utilities {
 			return true;
 		}
 	}
-	
+
 	public static function generateHash($value)
 	{
 		$config = \Phile\Registry::get('Phile_Settings');
 		$encryptionKey = $config['encryptionKey'];
 		return sha1($value . $encryptionKey);
 	}
-	
+
 	public static function encodeData($value, $key = NULL)
 	{
 		if($key == NULL) $key = Utilities::generateHash('');
-		
+
 		$j      = 0;
 		$hash   = '';
 		$value  = gzcompress(bin2hex($value));
@@ -213,14 +213,14 @@ class Utilities {
 			$j++;
 			$hash .= strrev(base_convert(dechex($ordStr + $ordKey),16,36));
 		}
-		
+
 		return gzcompress($hash);
 	}
-	
+
 	public static function decodeData($value, $key = NULL)
 	{
 		if($key == NULL) $key = Utilities::generateHash('');
-		
+
 		$j      = 0;
 		$hash   = '';
 		$value  = gzuncompress($value);
@@ -233,8 +233,23 @@ class Utilities {
 			$j++;
 			$hash .= chr($ordStr - $ordKey);
 		}
-		
-		return hex2bin(gzuncompress($hash));
-	}		
 
+		return hex2bin(gzuncompress($hash));
+	}
+	
+	public static function delTree($dir) {
+		$files = array_diff(scandir($dir), array('.','..'));
+		foreach ($files as $file) {
+			(is_dir("$dir/$file")) ? Utilities::delTree("$dir/$file") : unlink("$dir/$file");
+		}
+		return rmdir($dir);
+  } 
+
+	public static function error_log($message) {
+		$error_file = realpath(dirname(dirname(__FILE__)))."/error_log";
+		$file_handler = fopen($error_file, 'a');
+		$message = date("Y-m-d H:i:s")." ". $message ." \n";
+		$write = fwrite($file_handler, $message);
+		fclose($file_handler);
+	}
 }
