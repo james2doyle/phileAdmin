@@ -82,25 +82,37 @@ class Pages {
 	}
 
 	public function plugins()
-	{
-		$plugins = $this->config['plugins'];
+	{	
 		$plugin_obj = array();
-		// new objects for each plugin
-		foreach ($plugins as $key => $value) {
-			$plugin_obj[$key] = new \stdClass();
-			$plugin_obj[$key]->name = $key;
-			$plugin_obj[$key]->active = $value['active'];
-			$plugin_obj[$key]->slug = Utilities::slugify($key);
-			$plugin_obj[$key]->path = '/'.str_replace(ROOT_DIR, '', PLUGINS_DIR . $key);
+		$plugins = \Phile\Utility::getFiles(PLUGINS_DIR, '/^.*(config.php)$/');
+		$current_config = $this->config['plugins'];
+		
+		foreach($plugins as $plugin_path) {
+			// max path depth 2 levels
+			$plugin_name = str_replace(PLUGINS_DIR, '', $plugin_path);
+			if(substr_count($plugin_name, DIRECTORY_SEPARATOR) > 2) continue;
+			$plugin_name = str_replace(DIRECTORY_SEPARATOR . 'config.php', '', $plugin_name);
+			$pluginConfiguration = \Phile\Utility::load($plugin_path);
+			
+			// new objects for each plugin
+			$plugin_obj[$plugin_name] = new \stdClass();
+			$plugin_obj[$plugin_name]->id = str_replace(DIRECTORY_SEPARATOR, "\\", $plugin_name);
+			$plugin_obj[$plugin_name]->name = $plugin_name;
+			$plugin_obj[$plugin_name]->active = isset($current_config[$plugin_name]['active']) ? $current_config[$plugin_name]['active'] : false;
+			$plugin_obj[$plugin_name]->slug = Utilities::slugify($plugin_name);
+			$plugin_obj[$plugin_name]->path = DIRECTORY_SEPARATOR . str_replace(ROOT_DIR, '', PLUGINS_DIR . $plugin_name);
+			
 			foreach (array('author', 'namespace', 'url', 'version') as $item) {
 				$new_key = strtolower($item);
-				$plugin_obj[$key]->{$new_key} = isset($value['settings']['info'][$item]) ? $value['settings']['info'][$item]: null;
+				$plugin_obj[$plugin_name]->{$new_key} = isset($pluginConfiguration['info'][$item]) ? $pluginConfiguration['info'][$item]: null;
 			}
 		}
+		
 		$data = array_merge(array(
 			'title' => 'Plugins',
 			'body_class' => 'plugins',
-			'plugins_list' => $plugin_obj
+			'plugins_list' => $plugin_obj,
+			'unsafe_plugins' => $this->config['plugins']['phile\adminPanel']['settings']['unsafe_plugins']
 			), $this->settings);
 		Utilities::render('plugins.php', $data);
 	}

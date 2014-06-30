@@ -450,7 +450,9 @@ a, button[type="button"], input[type="submit"] {
 	}
   }
 }
-
+.plugin_active {
+  font-weight: 700;
+}
 .plugins .item-list {
   td, th {
     vertical-align: top;

@@ -236,6 +236,8 @@ class Utilities {
 
 		return hex2bin(gzuncompress($hash));
 	}
+<<<<<<< HEAD
+=======
 	
 	public static function delTree($dir) {
 		$files = array_diff(scandir($dir), array('.','..'));
@@ -244,6 +246,7 @@ class Utilities {
 		}
 		return rmdir($dir);
   } 
+>>>>>>> horphoz-master
 
 	public static function error_log($message) {
 		$error_file = realpath(dirname(dirname(__FILE__)))."/error_log";

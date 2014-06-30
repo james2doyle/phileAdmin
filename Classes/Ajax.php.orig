@@ -367,6 +367,9 @@ class Ajax {
 				'message' => 'Error saving config'
 				));
 		}
+<<<<<<< HEAD
+	}
+=======
 	}
 	
 	public function delete_plugin()
@@ -415,4 +418,5 @@ class Ajax {
 				));
 		}
 	}
+>>>>>>> horphoz-master
 }

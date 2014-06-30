@@ -238,8 +238,11 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	
-	
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> horphoz-master
 	$('#login').on('click', function(event) {
 		event.preventDefault();
 		$.post('validate_login', {
@@ -252,6 +255,8 @@ $(document).ready(function() {
 				vex.close();
 				window.location.href = '';
 			}, TIMEOUT_LENGTH);
+<<<<<<< HEAD
+=======
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
@@ -271,13 +276,13 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				location.reload();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving settings');
 			setTimeout(function() {
 				vex.close();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
 		});
 		return false;
 	});
@@ -291,13 +296,13 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				location.reload();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving config');
 			setTimeout(function() {
 				vex.close();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
 		});
 		return false;
 	});
@@ -315,7 +320,8 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				location.reload();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
+>>>>>>> horphoz-master
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
@@ -325,6 +331,10 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+<<<<<<< HEAD
+
+=======
+>>>>>>> horphoz-master
 	$('#save-user').on('click', function(event) {
 		event.preventDefault();
 		$.post('save_user', {
@@ -338,8 +348,13 @@ $(document).ready(function() {
 			vex.dialog.alert(res.message);
 			setTimeout(function() {
 				vex.close();
-				location.reload();
+<<<<<<< HEAD
+				window.location.href = 'users';
 			}, TIMEOUT_LENGTH);
+=======
+				location.reload();
+			}, 1500);
+>>>>>>> horphoz-master
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving user: ' + err.responseJSON.message);
@@ -349,10 +364,17 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+<<<<<<< HEAD
+
 	$('#cancel-edit').on('click', function(event) {
 		window.history.back();
 	});
-	
+
+=======
+	$('#cancel-edit').on('click', function(event) {
+		window.history.back();
+	});
+>>>>>>> horphoz-master
 	$('#delete-file').on('click', function(event) {
 		event.preventDefault();
 		$.post('delete', {
@@ -398,13 +420,13 @@ $(document).ready(function() {
 						setTimeout(function() {
 							vex.close();
 							location.reload();
-						}, TIMEOUT_LENGTH);
+						}, 1500);
 					}, function(err) {
 						console.log(err);
 						vex.dialog.alert('Error deleting plugin');
 						setTimeout(function() {
 							vex.close();
-						}, TIMEOUT_LENGTH);
+						}, 1500);
 					});
 				}
 			}
@@ -421,13 +443,13 @@ $(document).ready(function() {
 			setTimeout(function() {
 				vex.close();
 				location.reload();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
 		}, function(err) {
 			console.log(err);
 			vex.dialog.alert('Error saving plugins config');
 			setTimeout(function() {
 				vex.close();
-			}, TIMEOUT_LENGTH);
+			}, 1500);
 		});
 		return false;
 	});
