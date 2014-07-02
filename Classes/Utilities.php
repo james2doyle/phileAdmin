@@ -125,6 +125,7 @@ class Utilities {
 	public static function file_force_contents($dir, $contents){
 
 		$parts = explode(DIRECTORY_SEPARATOR, $dir);
+		$parts = array_filter($parts, 'strlen');
 		$file = array_pop($parts);
 		$dir = implode(DIRECTORY_SEPARATOR, $parts);
 
