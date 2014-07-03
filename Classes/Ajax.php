@@ -203,9 +203,9 @@ class Ajax {
 				'message' => 'Unsafe file extension'
 				));
 		}
-		$safe_filename = str_replace($path['filename'], Utilities::slugify($path['filename']), $this->data['path']);
+		$safe_filename = str_replace($path['filename'], Utilities::slugify($path['filename']), str_replace("/", DIRECTORY_SEPARATOR, $this->data['path']));
 		// use raw textarea value
-		$write = file_put_contents($safe_filename, $_POST['value']);
+		$write = Utilities::file_force_contents($safe_filename, $_POST['value']);
 
 		if($this->data['pageType'] == 'template') {
 			$received_filename = str_replace(ROOT_DIR, '', $this->data['path']);

@@ -277,15 +277,20 @@ class Pages {
 			// $page->content = $page->getContent();
 			$data = array_merge(array(
 				'title' => 'Create',
-				'body_class' => 'create-page',
+				'body_class' => 'pages',
 				'current_page' => $page,
 				'type' => $get['type'],
 				'save_path' => CONTENT_DIR . DIRECTORY_SEPARATOR,
 				'is_temp' => true
 				), $this->settings);
 		} else {
+			// try load index.html
+			$default_content = '';
+			if(file_exists(THEMES_DIR . $this->config['theme']. DIRECTORY_SEPARATOR . 'index.html')) {
+				$default_content = file_get_contents(THEMES_DIR . $this->config['theme']. DIRECTORY_SEPARATOR . 'index.html');
+			}
 			// create a temp file
-			Utilities::file_force_contents(CACHE_DIR . 'temp_'.$get['type'].'s' . DIRECTORY_SEPARATOR . $filename . '.html', file_get_contents(THEMES_DIR . $this->config['theme']. DIRECTORY_SEPARATOR . 'index.html'));
+			Utilities::file_force_contents(CACHE_DIR . 'temp_'.$get['type'].'s' . DIRECTORY_SEPARATOR . $filename . '.html', $default_content);
 			$page = new \stdClass;
 			$page->content = 'This page has no content';
 			$page->title = $filename. '.html';
@@ -296,7 +301,7 @@ class Pages {
 			$page->path = CACHE_DIR . 'temp_templates' . DIRECTORY_SEPARATOR . $filename . '.html';
 			$data = array_merge(array(
 				'title' => 'Create',
-				'body_class' => 'create-page',
+				'body_class' => 'templates',
 				'current_page' => $page,
 				'type' => $get['type'],
 				'save_path' => THEMES_DIR . $this->config['theme'] . DIRECTORY_SEPARATOR,
