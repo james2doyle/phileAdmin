@@ -123,18 +123,13 @@ class Utilities {
 	 * @return int           the number of bytes written
 	 */
 	public static function file_force_contents($dir, $contents){
-
-		$parts = explode(DIRECTORY_SEPARATOR, $dir);
-		$parts = array_filter($parts, 'strlen');
-		$file = array_pop($parts);
-		$dir = implode(DIRECTORY_SEPARATOR, $parts);
-
-		if (!is_dir($dir)) {
+		$path = pathinfo($dir);
+		if (!is_dir($path['dirname'])) {
 			// creates each directory recursively (using default chmod)
-			mkdir($dir, 0777, TRUE);
+			mkdir($path['dirname'], 0777, TRUE);
 		}
-
-		return file_put_contents($dir . DIRECTORY_SEPARATOR . $file, $contents);
+		$saved = file_put_contents($dir, $contents);
+		return $saved;
 	}
 
 	public static function array_to_object($array) {
@@ -237,14 +232,14 @@ class Utilities {
 
 		return hex2bin(gzuncompress($hash));
 	}
-	
+
 	public static function delTree($dir) {
 		$files = array_diff(scandir($dir), array('.','..'));
 		foreach ($files as $file) {
 			(is_dir("$dir/$file")) ? Utilities::delTree("$dir/$file") : unlink("$dir/$file");
 		}
 		return rmdir($dir);
-  } 
+	}
 
 	public static function error_log($message) {
 		$error_file = realpath(dirname(dirname(__FILE__)))."/error_log";
