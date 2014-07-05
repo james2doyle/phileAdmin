@@ -22,7 +22,8 @@ class Users {
 	 * @return int
 	 */
 	public static function count_users() {
-		return \Phile\Utility::getFiles(Users::get_users_path(), '/^.*\.(json)$/');
+		$users = \Phile\Utility::getFiles(Users::get_users_path(), '/^.*\.(json)$/');
+		return count($users);
 	}
 
 	/*!

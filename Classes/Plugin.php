@@ -38,8 +38,7 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 			$uri = explode('/', $data['uri']);
 
 			// check for users (first time run)
-			if(count(Users::count_users()) == 0)
-			{
+			if(Users::count_users() === 0) {
 				$default_user = Utilities::array_to_object($this->settings['default_user']);
 				if(empty($default_user->password)) {
 					$default_user->password = $this->config['encryptionKey'];
@@ -58,16 +57,17 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 				$_GET['id'] = $user->user_id;
 			}
 
-			if(\Phile\Session::get('PhileAdmin_logged') == null) {
-				if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-					$page = new Pages($this->settings);
-					$page->login();
-					exit;
-				}
-			}
-
 			if ($uri[0] == 'admin') {
-				if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+				// deny access when not logged in
+				if(\Phile\Session::get('PhileAdmin_logged') == null) {
+					if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+						$page = new Pages($this->settings);
+						$page->login();
+						exit;
+					}
+				}
+				// we are using GET requests, therefore assume we are looking for a page
+				if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 					$page = new Pages($this->settings);
 					// redirect missing pages to the home page
 					if (!isset($uri[1]) || $uri[1] === '') {
@@ -80,6 +80,7 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 						$page->fourofour();
 					}
 				} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+					// we have used a POST request, must be ajax time
 					$request = new Ajax($this->settings);
 					if (method_exists($request, $uri[1])) {
 						$request->{$uri[1]}();
