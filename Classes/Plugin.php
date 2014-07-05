@@ -36,7 +36,7 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 	public function on($eventKey, $data = null) {
 		if ($eventKey == 'request_uri') {
 			$uri = explode('/', $data['uri']);
-			
+
 			// check for users (first time run)
 			if(count(Users::count_users()) == 0)
 			{
@@ -45,19 +45,19 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 					$default_user->password = $this->config['encryptionKey'];
 				}
 				$default_user->email = $default_user->username . '@example.com';
-				
+
 				// create default user
 				Users::save_user($default_user);
 				$user = Users::get_user_by_username($default_user->username);
-				
+
 				\Phile\Session::set('PhileAdmin_logged', $user);
-				
+
 				// force edit new user (redirect doesn't work properly due to browser cache)
 				$uri = array(0 => 'admin', 1 => 'edit_user');
 				$_SERVER['REQUEST_METHOD'] = 'GET';
 				$_GET['id'] = $user->user_id;
 			}
-			
+
 			if(\Phile\Session::get('PhileAdmin_logged') == null) {
 				if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 					$page = new Pages($this->settings);
@@ -65,7 +65,7 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 					exit;
 				}
 			}
-			
+
 			if ($uri[0] == 'admin') {
 				if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 					$page = new Pages($this->settings);
