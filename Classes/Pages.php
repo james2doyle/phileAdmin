@@ -256,15 +256,20 @@ class Pages {
 		$date = new \DateTime();
 		$filename = 'temp-' . $date->getTimestamp();
 		if ($get['type'] == 'page') {
+			$default_content = "";
 			$template = "<!--\n";
 			foreach ($this->settings['required_fields'] as $field) {
+				if($field['name'] == 'default_content') {
+					$default_content = $field['default'];
+					continue;
+				}
 				if ($field['name'] == 'title') {
 					$title = $field['default'];
 				}
 				// template required meta
 				$template .= ucfirst($field['name']).": ".$field['default']."\n";
 			}
-			$template .= "-->\n\n";
+			$template .= "-->\n\n".$default_content;
 			// timestamp the temporary file in case we have multiple pages being made at once
 			// create a temp file
 			Utilities::file_force_contents(CACHE_DIR . 'temp_pages' . DIRECTORY_SEPARATOR . $filename . '.md', $template);
