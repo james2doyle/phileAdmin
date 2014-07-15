@@ -92,6 +92,7 @@ class Pages {
 			$plugin_name = str_replace(PLUGINS_DIR, '', $plugin_path);
 			if(substr_count($plugin_name, DIRECTORY_SEPARATOR) > 2) continue;
 			$plugin_name = str_replace(DIRECTORY_SEPARATOR . 'config.php', '', $plugin_name);
+			$plugin_name = str_replace('/', '\\', $plugin_name);
 			$pluginConfiguration = \Phile\Utility::load($plugin_path);
 			
 			// new objects for each plugin
