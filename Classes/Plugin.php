@@ -64,6 +64,12 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 						$page = new Pages($this->settings);
 						$page->login();
 						exit;
+					} elseif ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+						$request = new Ajax($this->settings);
+						$request->send_json(array(
+							'status' => false,
+							'message' => 'Request not valid.',
+							));
 					}
 				}
 				// we are using GET requests, therefore assume we are looking for a page
@@ -87,7 +93,7 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 					} else {
 						$request->send_json(array(
 							'status' => false,
-							'content' => 'Request not valid.',
+							'message' => 'Request not valid.',
 							));
 					}
 				}
