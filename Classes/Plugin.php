@@ -66,10 +66,17 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 						exit;
 					} elseif ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 						$request = new Ajax($this->settings);
-						$request->send_json(array(
-							'status' => false,
-							'message' => 'Request not valid.',
-							));
+						
+						$white_list_methods = array('validate_login');
+						
+						if (method_exists($request, $uri[1]) && in_array($uri[1], $white_list_methods)) {
+							$request->{$uri[1]}();
+						} else {
+							$request->send_json(array(
+								'status' => false,
+								'message' => 'Request not valid.',
+								));
+						}
 					}
 				}
 				// we are using GET requests, therefore assume we are looking for a page
